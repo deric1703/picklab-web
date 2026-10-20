@@ -1,0 +1,1028 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PickLab - Official E-Commerce & TikTok Affiliate Hub</title>
+  
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              50: '#f0fdf4',
+              100: '#dcfce7',
+              500: '#22c55e',
+              600: '#16a34a',
+              700: '#15803d',
+              800: '#166534',
+              900: '#14532d',
+            },
+            shopee: '#ee4d2d',
+            tiktok: '#ff0050'
+          }
+        }
+      }
+    }
+  </script>
+  
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+  
+  <!-- Font Inter -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+    }
+    .glassmorphism {
+      background: rgba(255, 255, 255, 0.8);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+    }
+    .dark .glassmorphism {
+      background: rgba(15, 23, 42, 0.85);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+    }
+    .custom-scrollbar::-webkit-scrollbar {
+      width: 6px;
+    }
+    .custom-scrollbar::-webkit-scrollbar-track {
+      background: transparent;
+    }
+    .custom-scrollbar::-webkit-scrollbar-thumb {
+      background: #cbd5e1;
+      border-radius: 4px;
+    }
+    .dark .custom-scrollbar::-webkit-scrollbar-thumb {
+      background: #334155;
+    }
+  </style>
+</head>
+<body class="bg-slate-50 dark:bg-slate-950 text-slate-800 dark:text-slate-100 min-h-screen flex flex-col transition-colors duration-200">
+
+  <!-- CONSTANTS FOR EXTERNAL LINKS -->
+  <script>
+    const PICKLAB_TIKTOK_URL = "https://www.tiktok.com/@picklabid";
+    const PICKLAB_SHOPEE_URL = "https://shopee.co.id/picklabs?entryPoint=ShopBySearch&searchKeyword=picklabs";
+  </script>
+
+  <!-- NAVIGATION HEADER -->
+  <header class="sticky top-0 z-40 w-full glassmorphism border-b border-slate-200 dark:border-slate-800 transition-colors">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-16">
+        
+        <!-- Left: Menu & Logo -->
+        <div class="flex items-center gap-3">
+          <button onclick="toggleSideMenu(true)" class="p-2 rounded-xl bg-slate-100 dark:bg-slate-900 hover:bg-slate-200 dark:hover:bg-slate-800 text-slate-700 dark:text-slate-300 transition-colors" title="Buka Menu">
+            <i data-lucide="menu" class="w-5 h-5"></i>
+          </button>
+
+          <div class="flex items-center gap-3 cursor-pointer" onclick="switchTab('store')">
+            <img src="logo.png" alt="Logo PickLab" class="w-10 h-10 rounded-xl object-cover shadow-md">
+            <div>
+            <div>
+              <span class="text-xl font-black tracking-tight bg-gradient-to-r from-slate-900 to-slate-700 dark:from-white dark:to-slate-300 bg-clip-text text-transparent">
+                PickLab
+              </span>
+              <span class="block text-[10px] font-semibold text-rose-500 dark:text-rose-400 tracking-wider uppercase -mt-1">
+                Official Store & Hub
+              </span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Header Actions: Shopee & TikTok Icons + Dark Mode -->
+        <div class="flex items-center gap-2">
+          
+          <!-- Shopee Icon Button -->
+          <a href="https://shopee.co.id/picklabs?entryPoint=ShopBySearch&searchKeyword=picklabs" target="_blank" class="p-2.5 rounded-xl bg-orange-50 dark:bg-orange-950/40 text-shopee hover:bg-orange-100 dark:hover:bg-orange-900/50 border border-orange-200 dark:border-orange-900 transition-colors" title="Shopee PickLab">
+            <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M19.5 7h-3.1c-.2-1.7-1.6-3-3.4-3s-3.2 1.3-3.4 3H6.5c-.8 0-1.5.7-1.5 1.5v11C5 20.3 5.7 21 6.5 21h11c.8 0 1.5-.7 1.5-1.5v-11c0-.8-.7-1.5-1.5-1.5zm-6-4c1.1 0 2 .9 2 2h-4c0-1.1.9-2 2-2zm6 17.5h-11v-11h2.5V11c0 .3.2.5.5.5s.5-.2.5-.5V9.5h5V11c0 .3.2.5.5.5s.5-.2.5-.5V9.5h2.5v11z"/></svg>
+          </a>
+
+          <!-- TikTok Icon Button -->
+          <a href="https://www.tiktok.com/@picklabid" target="_blank" class="p-2.5 rounded-xl bg-slate-100 dark:bg-slate-900 text-slate-900 dark:text-white hover:bg-slate-200 dark:hover:bg-slate-800 border border-slate-200 dark:border-slate-800 transition-colors" title="TikTok @picklabid">
+            <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z"/></svg>
+          </a>
+
+          <!-- Dark Mode Toggle -->
+          <button onclick="toggleDarkMode()" class="p-2.5 rounded-xl bg-slate-100 dark:bg-slate-900 hover:bg-slate-200 dark:hover:bg-slate-800 text-slate-700 dark:text-slate-300 transition-colors" title="Ganti Tema">
+            <i data-lucide="sun" class="w-5 h-5 hidden dark:block"></i>
+            <i data-lucide="moon" class="w-5 h-5 block dark:hidden"></i>
+          </button>
+        </div>
+
+      </div>
+    </div>
+  </header>
+
+  <!-- SLIDE-OUT NAVIGATION DRAWER -->
+  <div id="side-menu" class="fixed inset-0 z-50 hidden">
+    <div class="absolute inset-0 bg-slate-900/60 backdrop-blur-sm transition-opacity" onclick="toggleSideMenu(false)"></div>
+    <div class="absolute left-0 top-0 bottom-0 w-80 bg-white dark:bg-slate-900 p-6 flex flex-col justify-between shadow-2xl border-r border-slate-200 dark:border-slate-800">
+      
+      <div class="space-y-6">
+        <div class="flex items-center justify-between pb-4 border-b border-slate-200 dark:border-slate-800">
+          <div class="flex items-center gap-3">
+            <div class="w-9 h-9 rounded-xl bg-gradient-to-tr from-orange-500 to-rose-600 flex items-center justify-center text-white font-bold">PL</div>
+            <div>
+              <h4 class="font-black text-sm">PickLab Navigasi</h4>
+              <p class="text-[10px] text-slate-400">Pilih menu utama</p>
+            </div>
+          </div>
+          <button onclick="toggleSideMenu(false)" class="p-2 rounded-xl text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800">
+            <i data-lucide="x" class="w-5 h-5"></i>
+          </button>
+        </div>
+
+        <nav class="space-y-2">
+          <button onclick="switchTab('store'); toggleSideMenu(false);" id="menu-btn-store" class="w-full flex items-center gap-3 px-4 py-3 rounded-2xl text-sm font-bold transition-all bg-orange-50 dark:bg-orange-950/30 text-orange-600 dark:text-orange-400 border border-orange-200 dark:border-orange-800">
+            <i data-lucide="shopping-bag" class="w-5 h-5"></i>
+            <span>PickLab Socks Store</span>
+          </button>
+          
+          <button onclick="switchTab('affiliate'); toggleSideMenu(false);" id="menu-btn-affiliate" class="w-full flex items-center gap-3 px-4 py-3 rounded-2xl text-sm font-bold transition-all text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800">
+            <i data-lucide="video" class="w-5 h-5"></i>
+            <span>TikTok Affiliate Hub</span>
+          </button>
+        </nav>
+      </div>
+
+      <div class="pt-4 border-t border-slate-200 dark:border-slate-800 space-y-3">
+        <a href="https://shopee.co.id/picklabs?entryPoint=ShopBySearch&searchKeyword=picklabs" target="_blank" class="w-full py-2.5 rounded-xl bg-shopee text-white font-bold text-xs flex items-center justify-center gap-2 shadow-md">
+          <i data-lucide="shopping-bag" class="w-4 h-4"></i> Shopee PickLab Store
+        </a>
+        <a href="https://www.tiktok.com/@picklabid" target="_blank" class="w-full py-2.5 rounded-xl bg-tiktok text-white font-bold text-xs flex items-center justify-center gap-2 shadow-md">
+          <i data-lucide="video" class="w-4 h-4"></i> TikTok @picklabid
+        </a>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- FLOATING CART BUTTON (BOTTOM RIGHT) -->
+  <button id="floating-cart-btn" onclick="toggleCartModal(true)" class="fixed bottom-6 right-6 z-30 flex items-center gap-2.5 px-5 py-3.5 rounded-full bg-gradient-to-r from-orange-600 to-rose-600 text-white font-bold text-sm shadow-2xl shadow-orange-500/40 hover:scale-105 transition-transform">
+    <div class="relative">
+      <i data-lucide="shopping-cart" class="w-5 h-5"></i>
+      <span id="cart-badge" class="hidden absolute -top-2 -right-2 bg-slate-900 text-white text-[10px] font-extrabold w-5 h-5 rounded-full items-center justify-center border-2 border-orange-600">
+        0
+      </span>
+    </div>
+    <span class="hidden sm:inline">Keranjang</span>
+  </button>
+
+  <!-- MAIN CONTAINER -->
+  <main class="flex-grow max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-6 space-y-8">
+
+    <!-- ========================================== -->
+    <!-- SLIDABLE HERO BANNER CAROUSEL              -->
+    <!-- ========================================== -->
+    <div class="relative overflow-hidden rounded-3xl shadow-xl shadow-orange-500/10">
+      
+      <!-- Carousel Wrapper -->
+      <div id="hero-carousel" class="flex transition-transform duration-500 ease-out">
+        
+        <!-- BANNER 1: SHOPEE SOCKS STORE -->
+        <div class="w-full flex-shrink-0 bg-gradient-to-r from-orange-600 via-rose-600 to-indigo-700 text-white p-6 sm:p-10 relative">
+          <div class="relative z-10 max-w-2xl space-y-4">
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 backdrop-blur-md text-xs font-semibold border border-white/20">
+              <i data-lucide="sparkles" class="w-3.5 h-3.5 text-yellow-300"></i>
+              PickLab Socks Collection
+            </div>
+            <h1 class="text-3xl sm:text-5xl font-black tracking-tight leading-tight">
+              Kenyamanan Maksimal & Gaya Trendy di Setiap Langkah.
+            </h1>
+            <p class="text-slate-100 text-sm sm:text-base font-normal">
+              Koleksi kaos kaki premium PickLab dengan bahan breathable, elastisitas tahan lama, dan desain modern. Siap dikirim langsung atau order via Shopee Official.
+            </p>
+            <div class="pt-2 flex flex-wrap gap-3">
+              <a href="#socks-catalog" class="px-5 py-2.5 rounded-xl bg-white text-slate-900 font-bold text-sm hover:bg-slate-100 transition-colors shadow-lg">
+                Eksplor Katalog
+              </a>
+              <a href="https://shopee.co.id/picklabs?entryPoint=ShopBySearch&searchKeyword=picklabs" target="_blank" class="px-5 py-2.5 rounded-xl bg-shopee/90 text-white font-bold text-sm hover:bg-shopee transition-colors flex items-center gap-2 shadow-lg">
+                <i data-lucide="shopping-bag" class="w-4 h-4"></i>
+                Kunjungi Shopee PickLab
+              </a>
+            </div>
+          </div>
+          <div class="absolute -right-12 -bottom-12 w-64 h-64 sm:w-96 sm:h-96 rounded-full bg-white/10 blur-2xl pointer-events-none"></div>
+        </div>
+
+        <!-- BANNER 2: TIKTOK AFFILIATE HUB -->
+        <div class="w-full flex-shrink-0 bg-gradient-to-r from-slate-900 via-rose-950 to-purple-950 text-white p-6 sm:p-10 relative">
+          <div class="relative z-10 max-w-2xl space-y-4">
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-tiktok/20 text-tiktok text-xs font-semibold border border-tiktok/30">
+              <i data-lucide="video" class="w-3.5 h-3.5"></i>
+              TikTok Official Account @picklabid
+            </div>
+            <h1 class="text-3xl sm:text-5xl font-black tracking-tight leading-tight">
+              Rekomendasi Produk Viral & Review TikTok PickLab
+            </h1>
+            <p class="text-slate-300 text-sm sm:text-base">
+              Temukan produk rekomendasi gadget, lifestyle, dan fashion terbaik yang di-review langsung di akun TikTok <strong class="text-white">@picklabid</strong>. Dapatkan diskon & promo khusus via TikTok Shop!
+            </p>
+            <div class="pt-2 flex flex-wrap gap-3">
+              <button onclick="switchTab('affiliate')" class="px-5 py-2.5 rounded-xl bg-rose-600 hover:bg-rose-700 text-white font-bold text-sm transition-colors shadow-lg">
+                Lihat Semua Video
+              </button>
+              <a href="https://www.tiktok.com/@picklabid" target="_blank" class="px-5 py-2.5 rounded-xl bg-tiktok text-white font-bold text-sm hover:bg-rose-600 transition-colors flex items-center gap-2 shadow-lg">
+                <i data-lucide="external-link" class="w-4 h-4"></i>
+                Ikuti TikTok @picklabid
+              </a>
+            </div>
+          </div>
+          <div class="absolute -right-10 -top-10 w-80 h-80 rounded-full bg-rose-500/10 blur-3xl pointer-events-none"></div>
+        </div>
+
+      </div>
+
+      <!-- Carousel Controls (Previous / Next & Dots) -->
+      <div class="absolute bottom-4 right-6 z-20 flex items-center gap-3">
+        <button onclick="slideBanner(-1)" class="w-9 h-9 rounded-full bg-black/40 hover:bg-black/60 text-white flex items-center justify-content backdrop-blur-md transition-colors">
+          <i data-lucide="chevron-left" class="w-5 h-5 mx-auto"></i>
+        </button>
+        <div class="flex items-center gap-1.5">
+          <span class="carousel-dot w-2.5 h-2.5 rounded-full bg-white transition-all cursor-pointer" onclick="setSlide(0)"></span>
+          <span class="carousel-dot w-2.5 h-2.5 rounded-full bg-white/50 transition-all cursor-pointer" onclick="setSlide(1)"></span>
+        </div>
+        <button onclick="slideBanner(1)" class="w-9 h-9 rounded-full bg-black/40 hover:bg-black/60 text-white flex items-center justify-content backdrop-blur-md transition-colors">
+          <i data-lucide="chevron-right" class="w-5 h-5 mx-auto"></i>
+        </button>
+      </div>
+
+    </div>
+
+    <!-- ========================================== -->
+    <!-- TAB 1: PICKLAB SOCKS ONLINE STORE          -->
+    <!-- ========================================== -->
+    <section id="tab-store" class="space-y-6">
+      
+      <!-- Store Controls (Search & Filter) -->
+      <div id="socks-catalog" class="flex flex-col sm:flex-row gap-4 items-stretch sm:items-center justify-between pt-2">
+        <div class="flex items-center gap-2 overflow-x-auto pb-2 sm:pb-0 custom-scrollbar">
+          <button onclick="filterSocksCategory('All')" class="sock-cat-btn px-4 py-2 rounded-xl text-xs font-bold whitespace-nowrap transition-all bg-slate-900 text-white dark:bg-white dark:text-slate-900 shadow-sm" data-category="All">
+            Semua
+          </button>
+          <button onclick="filterSocksCategory('Ankle')" class="sock-cat-btn px-4 py-2 rounded-xl text-xs font-bold whitespace-nowrap transition-all bg-slate-100 text-slate-600 hover:bg-slate-200 dark:bg-slate-900 dark:text-slate-400 dark:hover:bg-slate-800" data-category="Ankle">
+            Ankle Socks
+          </button>
+          <button onclick="filterSocksCategory('Crew')" class="sock-cat-btn px-4 py-2 rounded-xl text-xs font-bold whitespace-nowrap transition-all bg-slate-100 text-slate-600 hover:bg-slate-200 dark:bg-slate-900 dark:text-slate-400 dark:hover:bg-slate-800" data-category="Crew">
+            Crew Socks
+          </button>
+          <button onclick="filterSocksCategory('Athletic')" class="sock-cat-btn px-4 py-2 rounded-xl text-xs font-bold whitespace-nowrap transition-all bg-slate-100 text-slate-600 hover:bg-slate-200 dark:bg-slate-900 dark:text-slate-400 dark:hover:bg-slate-800" data-category="Athletic">
+            Olahraga
+          </button>
+          <button onclick="filterSocksCategory('Patterned')" class="sock-cat-btn px-4 py-2 rounded-xl text-xs font-bold whitespace-nowrap transition-all bg-slate-100 text-slate-600 hover:bg-slate-200 dark:bg-slate-900 dark:text-slate-400 dark:hover:bg-slate-800" data-category="Patterned">
+            Motif / Pattern
+          </button>
+        </div>
+
+        <div class="relative min-w-[240px]">
+          <i data-lucide="search" class="w-4 h-4 absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400"></i>
+          <input type="text" id="socks-search" oninput="renderSocksGrid()" placeholder="Cari kaos kaki..." class="w-full pl-10 pr-4 py-2 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-xs font-medium focus:outline-none focus:ring-2 focus:ring-orange-500">
+        </div>
+      </div>
+
+      <!-- Socks Product Grid -->
+      <div id="socks-grid" class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6">
+        <!-- Dynamic JS Rendering -->
+      </div>
+    </section>
+
+    <!-- ========================================== -->
+    <!-- TAB 2: TIKTOK AFFILIATE HUB                -->
+    <!-- ========================================== -->
+    <section id="tab-affiliate" class="hidden space-y-6">
+      
+      <!-- Search & Filters for Affiliate -->
+      <div class="flex flex-col sm:flex-row gap-4 items-stretch sm:items-center justify-between">
+        <div class="flex items-center gap-2 overflow-x-auto pb-2 sm:pb-0 custom-scrollbar">
+          <button onclick="filterAffiliateCategory('All')" class="aff-cat-btn px-4 py-2 rounded-xl text-xs font-bold whitespace-nowrap transition-all bg-slate-900 text-white dark:bg-white dark:text-slate-900" data-category="All">
+            Semua Video/Produk
+          </button>
+          <button onclick="filterAffiliateCategory('Tech')" class="aff-cat-btn px-4 py-2 rounded-xl text-xs font-bold whitespace-nowrap transition-all bg-slate-100 text-slate-600 hover:bg-slate-200 dark:bg-slate-900 dark:text-slate-400 dark:hover:bg-slate-800" data-category="Tech">
+            Tech & Gadget
+          </button>
+          <button onclick="filterAffiliateCategory('Lifestyle')" class="aff-cat-btn px-4 py-2 rounded-xl text-xs font-bold whitespace-nowrap transition-all bg-slate-100 text-slate-600 hover:bg-slate-200 dark:bg-slate-900 dark:text-slate-400 dark:hover:bg-slate-800" data-category="Lifestyle">
+            Lifestyle
+          </button>
+          <button onclick="filterAffiliateCategory('Fashion')" class="aff-cat-btn px-4 py-2 rounded-xl text-xs font-bold whitespace-nowrap transition-all bg-slate-100 text-slate-600 hover:bg-slate-200 dark:bg-slate-900 dark:text-slate-400 dark:hover:bg-slate-800" data-category="Fashion">
+            Fashion & Outfit
+          </button>
+        </div>
+
+        <div class="relative min-w-[240px]">
+          <i data-lucide="search" class="w-4 h-4 absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400"></i>
+          <input type="text" id="affiliate-search" oninput="renderAffiliateGrid()" placeholder="Cari ulasan video / affiliate..." class="w-full pl-10 pr-4 py-2 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-xs font-medium focus:outline-none focus:ring-2 focus:ring-rose-500">
+        </div>
+      </div>
+
+      <!-- Affiliate Product Grid -->
+      <div id="affiliate-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <!-- Dynamic JS Rendering -->
+      </div>
+    </section>
+
+    <!-- ========================================== -->
+    <!-- TAB 3: ADMIN DASHBOARD PORTAL              -->
+    <!-- ========================================== -->
+    <section id="tab-admin" class="hidden space-y-8">
+      
+      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 bg-white dark:bg-slate-900 p-6 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm">
+        <div>
+          <div class="flex items-center gap-2">
+            <span class="px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-indigo-100 text-indigo-700 dark:bg-indigo-950 dark:text-indigo-400 uppercase tracking-wider">
+              Admin Control Center
+            </span>
+            <span class="text-xs text-slate-400">v2.6</span>
+          </div>
+          <h2 class="text-2xl font-bold mt-1">PickLab Operations Dashboard</h2>
+        </div>
+        
+        <button onclick="switchTab('store')" class="px-4 py-2 rounded-xl text-xs font-bold border border-slate-200 dark:border-slate-800 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors flex items-center gap-2 w-fit">
+          <i data-lucide="arrow-left" class="w-4 h-4"></i>
+          Keluar ke Store Front
+        </button>
+      </div>
+
+      <!-- Admin Stats -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+        <div class="bg-white dark:bg-slate-900 p-5 rounded-2xl border border-slate-200 dark:border-slate-800">
+          <div class="flex items-center justify-between text-slate-500">
+            <span class="text-xs font-semibold uppercase tracking-wider">Total Stok Kaos Kaki</span>
+            <i data-lucide="box" class="w-5 h-5 text-orange-500"></i>
+          </div>
+          <div id="stat-socks-stock" class="text-2xl font-black mt-2">0</div>
+        </div>
+        <div class="bg-white dark:bg-slate-900 p-5 rounded-2xl border border-slate-200 dark:border-slate-800">
+          <div class="flex items-center justify-between text-slate-500">
+            <span class="text-xs font-semibold uppercase tracking-wider">Konten Affiliate</span>
+            <i data-lucide="video" class="w-5 h-5 text-rose-500"></i>
+          </div>
+          <div id="stat-affiliate-count" class="text-2xl font-black mt-2">0</div>
+        </div>
+        <div class="bg-white dark:bg-slate-900 p-5 rounded-2xl border border-slate-200 dark:border-slate-800">
+          <div class="flex items-center justify-between text-slate-500">
+            <span class="text-xs font-semibold uppercase tracking-wider">Total Klik Affiliate</span>
+            <i data-lucide="mouse-pointer" class="w-5 h-5 text-blue-500"></i>
+          </div>
+          <div id="stat-affiliate-clicks" class="text-2xl font-black mt-2">0</div>
+        </div>
+        <div class="bg-white dark:bg-slate-900 p-5 rounded-2xl border border-slate-200 dark:border-slate-800">
+          <div class="flex items-center justify-between text-slate-500">
+            <span class="text-xs font-semibold uppercase tracking-wider">Pesanan Masuk</span>
+            <i data-lucide="shopping-bag" class="w-5 h-5 text-emerald-500"></i>
+          </div>
+          <div id="stat-orders-count" class="text-2xl font-black mt-2">0</div>
+        </div>
+      </div>
+
+      <!-- Admin Sub-Tabs -->
+      <div class="flex border-b border-slate-200 dark:border-slate-800">
+        <button id="admin-subnav-socks" onclick="switchAdminSubtab('socks')" class="px-6 py-3 text-sm font-bold border-b-2 border-orange-500 text-orange-600 dark:text-orange-400">
+          Inventaris Kaos Kaki
+        </button>
+        <button id="admin-subnav-affiliate" onclick="switchAdminSubtab('affiliate')" class="px-6 py-3 text-sm font-bold border-b-2 border-transparent text-slate-500 hover:text-slate-900 dark:hover:text-white">
+          Kelola TikTok Affiliate
+        </button>
+        <button id="admin-subnav-orders" onclick="switchAdminSubtab('orders')" class="px-6 py-3 text-sm font-bold border-b-2 border-transparent text-slate-500 hover:text-slate-900 dark:hover:text-white">
+          Daftar Pesanan Toko
+        </button>
+      </div>
+
+      <!-- ADMIN PANEL 1 -->
+      <div id="admin-panel-socks" class="space-y-6">
+        <div class="flex justify-between items-center">
+          <h3 class="text-lg font-bold">Katalog Kaos Kaki Shopee / Direct Store</h3>
+          <button onclick="openSocksModal()" class="px-4 py-2 rounded-xl bg-orange-600 hover:bg-orange-700 text-white font-bold text-xs flex items-center gap-2 shadow-md">
+            <i data-lucide="plus" class="w-4 h-4"></i> Tambah Kaos Kaki Baru
+          </button>
+        </div>
+        <div class="overflow-x-auto bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm">
+          <table class="w-full text-left border-collapse text-xs">
+            <thead>
+              <tr class="border-b border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-900/50 text-slate-500 font-bold uppercase">
+                <th class="p-4">Produk</th>
+                <th class="p-4">Kategori</th>
+                <th class="p-4">Harga</th>
+                <th class="p-4">Stok</th>
+                <th class="p-4">Status</th>
+                <th class="p-4 text-right">Aksi</th>
+              </tr>
+            </thead>
+            <tbody id="admin-socks-table-body" class="divide-y divide-slate-200 dark:divide-slate-800 font-medium"></tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- ADMIN PANEL 2 -->
+      <div id="admin-panel-affiliate" class="hidden space-y-6">
+        <div class="flex justify-between items-center">
+          <h3 class="text-lg font-bold">Daftar Link Affiliate & Review TikTok</h3>
+          <button onclick="openAffiliateModal()" class="px-4 py-2 rounded-xl bg-rose-600 hover:bg-rose-700 text-white font-bold text-xs flex items-center gap-2 shadow-md">
+            <i data-lucide="plus" class="w-4 h-4"></i> Tambah Link Affiliate TikTok
+          </button>
+        </div>
+        <div class="overflow-x-auto bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm">
+          <table class="w-full text-left border-collapse text-xs">
+            <thead>
+              <tr class="border-b border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-900/50 text-slate-500 font-bold uppercase">
+                <th class="p-4">Konten Affiliate</th>
+                <th class="p-4">Kategori</th>
+                <th class="p-4">Sumber</th>
+                <th class="p-4">Total Klik</th>
+                <th class="p-4 text-right">Aksi</th>
+              </tr>
+            </thead>
+            <tbody id="admin-affiliate-table-body" class="divide-y divide-slate-200 dark:divide-slate-800 font-medium"></tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- ADMIN PANEL 3 -->
+      <div id="admin-panel-orders" class="hidden space-y-6">
+        <h3 class="text-lg font-bold">Histori Transaksi Pembelian Toko</h3>
+        <div class="overflow-x-auto bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm">
+          <table class="w-full text-left border-collapse text-xs">
+            <thead>
+              <tr class="border-b border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-900/50 text-slate-500 font-bold uppercase">
+                <th class="p-4">ID Pesanan</th>
+                <th class="p-4">Pelanggan</th>
+                <th class="p-4">Item Belanja</th>
+                <th class="p-4">Total Tagihan</th>
+                <th class="p-4">Waktu</th>
+              </tr>
+            </thead>
+            <tbody id="admin-orders-table-body" class="divide-y divide-slate-200 dark:divide-slate-800 font-medium"></tbody>
+          </table>
+        </div>
+      </div>
+
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="mt-auto border-t border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 transition-colors">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+      <div class="flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500">
+        <div class="flex items-center gap-2">
+          <span id="secret-admin-trigger" class="font-bold text-slate-800 dark:text-slate-200 cursor-pointer select-none" title="Triple click for Admin">
+            PickLab Official
+          </span>
+          <span>&copy; 2026 PickLab ID. All rights reserved.</span>
+        </div>
+        <div class="flex items-center gap-4">
+          <a href="https://www.tiktok.com/@picklabid" target="_blank" class="hover:text-rose-500 transition-colors flex items-center gap-1 font-semibold">
+            <i data-lucide="video" class="w-3.5 h-3.5"></i> TikTok @picklabid
+          </a>
+          <a href="https://shopee.co.id/picklabs?entryPoint=ShopBySearch&searchKeyword=picklabs" target="_blank" class="hover:text-orange-500 transition-colors flex items-center gap-1 font-semibold">
+            <i data-lucide="shopping-bag" class="w-3.5 h-3.5"></i> Shopee PickLab
+          </a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- =================MODALS & DRAWERS================ -->
+
+  <!-- CART DRAWER -->
+  <div id="cart-drawer" class="fixed inset-0 z-50 hidden">
+    <div class="absolute inset-0 bg-slate-900/60 backdrop-blur-sm" onclick="toggleCartModal(false)"></div>
+    <div class="absolute right-0 top-0 bottom-0 w-full max-w-md bg-white dark:bg-slate-900 p-6 flex flex-col justify-between shadow-2xl border-l border-slate-200 dark:border-slate-800">
+      <div>
+        <div class="flex items-center justify-between pb-4 border-b border-slate-200 dark:border-slate-800">
+          <h3 class="text-lg font-bold flex items-center gap-2">
+            <i data-lucide="shopping-bag" class="w-5 h-5 text-orange-500"></i> Keranjang Belanja
+          </h3>
+          <button onclick="toggleCartModal(false)" class="p-1 rounded-lg text-slate-400 hover:text-slate-600">
+            <i data-lucide="x" class="w-5 h-5"></i>
+          </button>
+        </div>
+        <div id="cart-items-container" class="py-4 space-y-4 max-h-[60vh] overflow-y-auto custom-scrollbar"></div>
+      </div>
+      <div class="border-t border-slate-200 dark:border-slate-800 pt-4 space-y-3">
+        <div class="flex items-center justify-between text-sm font-bold">
+          <span>Total Belanja</span>
+          <span id="cart-total-price" class="text-orange-600 text-lg">Rp 0</span>
+        </div>
+        <button onclick="openCheckoutModal()" class="w-full py-3 rounded-xl bg-orange-600 hover:bg-orange-700 text-white font-bold text-sm transition-colors shadow-lg">
+          Lanjut Checkout Direct Store
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- CHECKOUT MODAL -->
+  <div id="checkout-modal" class="fixed inset-0 z-50 hidden flex items-center justify-center p-4">
+    <div class="absolute inset-0 bg-slate-900/60 backdrop-blur-sm" onclick="closeCheckoutModal()"></div>
+    <div class="relative w-full max-w-lg bg-white dark:bg-slate-900 rounded-3xl p-6 shadow-2xl border border-slate-200 dark:border-slate-800 space-y-4">
+      <div class="flex justify-between items-center pb-2 border-b border-slate-200 dark:border-slate-800">
+        <h3 class="text-lg font-bold">Checkout Pesanan Kaos Kaki</h3>
+        <button onclick="closeCheckoutModal()" class="text-slate-400 hover:text-slate-600"><i data-lucide="x" class="w-5 h-5"></i></button>
+      </div>
+      <form id="checkout-form" onsubmit="processCheckout(event)" class="space-y-3 text-xs">
+        <div>
+          <label class="block font-bold mb-1">Nama Lengkap</label>
+          <input type="text" id="cust-name" required class="w-full px-3 py-2 rounded-xl bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700">
+        </div>
+        <div>
+          <label class="block font-bold mb-1">Nomor WhatsApp</label>
+          <input type="tel" id="cust-phone" required class="w-full px-3 py-2 rounded-xl bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700">
+        </div>
+        <div>
+          <label class="block font-bold mb-1">Alamat Pengiriman</label>
+          <textarea id="cust-address" required rows="2" class="w-full px-3 py-2 rounded-xl bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700"></textarea>
+        </div>
+        <div class="pt-2"><button type="submit" class="w-full py-3 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold">Konfirmasi Pesanan</button></div>
+      </form>
+    </div>
+  </div>
+
+  <!-- SOCKS MODAL -->
+  <div id="socks-modal" class="fixed inset-0 z-50 hidden flex items-center justify-center p-4">
+    <div class="absolute inset-0 bg-slate-900/60 backdrop-blur-sm" onclick="closeSocksModal()"></div>
+    <div class="relative w-full max-w-md bg-white dark:bg-slate-900 rounded-3xl p-6 shadow-2xl border border-slate-200 dark:border-slate-800 space-y-4">
+      <div class="flex justify-between items-center pb-2 border-b border-slate-200 dark:border-slate-800">
+        <h3 id="socks-modal-title" class="text-lg font-bold">Tambah Kaos Kaki Baru</h3>
+        <button onclick="closeSocksModal()" class="text-slate-400"><i data-lucide="x" class="w-5 h-5"></i></button>
+      </div>
+      <form id="socks-form" onsubmit="saveSockItem(event)" class="space-y-3 text-xs">
+        <input type="hidden" id="sock-id">
+        <div><label class="block font-bold mb-1">Nama Produk</label><input type="text" id="sock-title" required class="w-full px-3 py-2 rounded-xl bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700"></div>
+        <div class="grid grid-cols-2 gap-2">
+          <div><label class="block font-bold mb-1">Kategori</label><select id="sock-category" class="w-full px-3 py-2 rounded-xl bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700"><option value="Ankle">Ankle</option><option value="Crew">Crew</option><option value="Athletic">Olahraga</option><option value="Patterned">Motif</option></select></div>
+          <div><label class="block font-bold mb-1">Stok</label><input type="number" id="sock-stock" required min="0" class="w-full px-3 py-2 rounded-xl bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700"></div>
+        </div>
+        <div><label class="block font-bold mb-1">Harga (Rp)</label><input type="number" id="sock-price" required min="0" class="w-full px-3 py-2 rounded-xl bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700"></div>
+        <div><label class="block font-bold mb-1">URL Gambar</label><input type="url" id="sock-image" required class="w-full px-3 py-2 rounded-xl bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700"></div>
+        <div><label class="block font-bold mb-1">Link Shopee</label><input type="url" id="sock-shopee-url" class="w-full px-3 py-2 rounded-xl bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700"></div>
+        <div class="pt-2"><button type="submit" class="w-full py-2.5 rounded-xl bg-orange-600 hover:bg-orange-700 text-white font-bold">Simpan</button></div>
+      </form>
+    </div>
+  </div>
+
+  <!-- AFFILIATE MODAL -->
+  <div id="affiliate-modal" class="fixed inset-0 z-50 hidden flex items-center justify-center p-4">
+    <div class="absolute inset-0 bg-slate-900/60 backdrop-blur-sm" onclick="closeAffiliateModal()"></div>
+    <div class="relative w-full max-w-md bg-white dark:bg-slate-900 rounded-3xl p-6 shadow-2xl border border-slate-200 dark:border-slate-800 space-y-4">
+      <div class="flex justify-between items-center pb-2 border-b border-slate-200 dark:border-slate-800">
+        <h3 id="aff-modal-title" class="text-lg font-bold">Tambah Link Affiliate TikTok</h3>
+        <button onclick="closeAffiliateModal()" class="text-slate-400"><i data-lucide="x" class="w-5 h-5"></i></button>
+      </div>
+      <form id="affiliate-form" onsubmit="saveAffiliateItem(event)" class="space-y-3 text-xs">
+        <input type="hidden" id="aff-id">
+        <div><label class="block font-bold mb-1">Judul Review</label><input type="text" id="aff-title" required class="w-full px-3 py-2 rounded-xl bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700"></div>
+        <div class="grid grid-cols-2 gap-2">
+          <div><label class="block font-bold mb-1">Kategori</label><select id="aff-category" class="w-full px-3 py-2 rounded-xl bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700"><option value="Tech">Tech</option><option value="Lifestyle">Lifestyle</option><option value="Fashion">Fashion</option></select></div>
+          <div><label class="block font-bold mb-1">Badge</label><input type="text" id="aff-badge" class="w-full px-3 py-2 rounded-xl bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700"></div>
+        </div>
+        <div><label class="block font-bold mb-1">Estimasi Harga (Rp)</label><input type="number" id="aff-price" required min="0" class="w-full px-3 py-2 rounded-xl bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700"></div>
+        <div><label class="block font-bold mb-1">URL Cover / Gambar</label><input type="url" id="aff-image" required class="w-full px-3 py-2 rounded-xl bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700"></div>
+        <div><label class="block font-bold mb-1">Link TikTok (@picklabid)</label><input type="url" id="aff-tiktok-url" required value="https://www.tiktok.com/@picklabid" class="w-full px-3 py-2 rounded-xl bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700"></div>
+        <div class="pt-2"><button type="submit" class="w-full py-2.5 rounded-xl bg-rose-600 hover:bg-rose-700 text-white font-bold">Simpan</button></div>
+      </form>
+    </div>
+  </div>
+
+  <!-- JAVASCRIPT LOGIC -->
+  <script>
+    const initialSocksData = [
+      { id: "sock-1", title: "PickLab Essential Ankle Socks (3 Pack)", category: "Ankle", price: 39000, stock: 28, image: "https://images.unsplash.com/photo-1586350977771-b3b0abd50c82?w=500&auto=format&fit=crop&q=60", shopeeUrl: PICKLAB_SHOPEE_URL },
+      { id: "sock-2", title: "PickLab Crew Sports Cushioned Socks", category: "Athletic", price: 29000, stock: 14, image: "https://images.unsplash.com/photo-1582966772680-860e372bb558?w=500&auto=format&fit=crop&q=60", shopeeUrl: PICKLAB_SHOPEE_URL },
+      { id: "sock-3", title: "PickLab Retro Striped High Socks", category: "Crew", price: 25000, stock: 9, image: "https://images.unsplash.com/photo-1608256246200-53e635b5b65f?w=500&auto=format&fit=crop&q=60", shopeeUrl: PICKLAB_SHOPEE_URL },
+      { id: "sock-4", title: "PickLab Minimalist Checkered Pattern", category: "Patterned", price: 27000, stock: 20, image: "https://images.unsplash.com/photo-1543163521-1bf539c55dd2?w=500&auto=format&fit=crop&q=60", shopeeUrl: PICKLAB_SHOPEE_URL }
+    ];
+
+    const initialAffiliateData = [
+      { id: "aff-1", title: "TWS Anker Soundcore Life P2i Review Jujur", category: "Tech", price: 299000, badge: "Rekomendasi Video", clicks: 142, image: "https://images.unsplash.com/photo-1590658268037-6bf12165a8df?w=500&auto=format&fit=crop&q=60", tiktokUrl: PICKLAB_TIKTOK_URL },
+      { id: "aff-2", title: "Setup Stand Laptop Alumunium Minimalis Ergonomis", category: "Lifestyle", price: 115000, badge: "Viral di TikTok", clicks: 89, image: "https://images.unsplash.com/photo-1527864550417-7fd91fc51a46?w=500&auto=format&fit=crop&q=60", tiktokUrl: PICKLAB_TIKTOK_URL },
+      { id: "aff-3", title: "Oversized Heavyweight T-Shirt Cotton 24s", category: "Fashion", price: 85000, badge: "OOTD PickLab", clicks: 65, image: "https://images.unsplash.com/photo-1521572267360-ee0c2909d518?w=500&auto=format&fit=crop&q=60", tiktokUrl: PICKLAB_TIKTOK_URL }
+    ];
+
+    let socksList = JSON.parse(localStorage.getItem('picklab_socks')) || initialSocksData;
+    let affiliateList = JSON.parse(localStorage.getItem('picklab_affiliate')) || initialAffiliateData;
+    let orderHistory = JSON.parse(localStorage.getItem('picklab_orders')) || [];
+    let cart = JSON.parse(localStorage.getItem('picklab_cart')) || [];
+
+    let activeTab = 'store';
+    let currentSocksFilter = 'All';
+    let currentAffiliateFilter = 'All';
+    let currentSlide = 0;
+    const totalSlides = 2;
+
+    window.addEventListener('DOMContentLoaded', () => {
+      lucide.createIcons();
+      renderSocksGrid();
+      renderAffiliateGrid();
+      updateCartUI();
+      updateAdminDashboard();
+
+      // Auto-slide hero banner every 5 seconds
+      setInterval(() => {
+        currentSlide = (currentSlide + 1) % totalSlides;
+        updateCarousel();
+      }, 5000);
+
+      const secretTrigger = document.getElementById('secret-admin-trigger');
+      if (secretTrigger) {
+        let count = 0, timer = null;
+        secretTrigger.addEventListener('click', () => {
+          count++;
+          if (count === 3) { count = 0; openAdminAuth(); }
+          clearTimeout(timer);
+          timer = setTimeout(() => { count = 0; }, 600);
+        });
+      }
+
+      window.addEventListener('keydown', (e) => {
+        if (e.ctrlKey && e.shiftKey && e.key.toLowerCase() === 'a') {
+          e.preventDefault();
+          openAdminAuth();
+        }
+      });
+    });
+
+    // CAROUSEL SLIDER LOGIC
+    function slideBanner(direction) {
+      currentSlide = (currentSlide + direction + totalSlides) % totalSlides;
+      updateCarousel();
+    }
+
+    function setSlide(index) {
+      currentSlide = index;
+      updateCarousel();
+    }
+
+    function updateCarousel() {
+      const carousel = document.getElementById('hero-carousel');
+      if (carousel) {
+        carousel.style.transform = `translateX(-${currentSlide * 100}%)`;
+      }
+      const dots = document.querySelectorAll('.carousel-dot');
+      dots.forEach((dot, idx) => {
+        dot.className = idx === currentSlide 
+          ? "carousel-dot w-2.5 h-2.5 rounded-full bg-white transition-all cursor-pointer" 
+          : "carousel-dot w-2.5 h-2.5 rounded-full bg-white/50 transition-all cursor-pointer";
+      });
+    }
+
+    // STORAGE HELPERS
+    function saveSocksToStorage() { localStorage.setItem('picklab_socks', JSON.stringify(socksList)); renderSocksGrid(); updateAdminDashboard(); }
+    function saveAffiliateToStorage() { localStorage.setItem('picklab_affiliate', JSON.stringify(affiliateList)); renderAffiliateGrid(); updateAdminDashboard(); }
+    function saveOrdersToStorage() { localStorage.setItem('picklab_orders', JSON.stringify(orderHistory)); updateAdminDashboard(); }
+    function saveCartToStorage() { localStorage.setItem('picklab_cart', JSON.stringify(cart)); updateCartUI(); }
+
+    function toggleSideMenu(show) { document.getElementById('side-menu').classList.toggle('hidden', !show); }
+
+    function switchTab(tabName) {
+      activeTab = tabName;
+      document.getElementById('tab-store').classList.add('hidden');
+      document.getElementById('tab-affiliate').classList.add('hidden');
+      document.getElementById('tab-admin').classList.add('hidden');
+
+      const btnStore = document.getElementById('menu-btn-store');
+      const btnAff = document.getElementById('menu-btn-affiliate');
+      if (btnStore) btnStore.className = "w-full flex items-center gap-3 px-4 py-3 rounded-2xl text-sm font-bold text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800";
+      if (btnAff) btnAff.className = "w-full flex items-center gap-3 px-4 py-3 rounded-2xl text-sm font-bold text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800";
+
+      if (tabName === 'store') {
+        document.getElementById('tab-store').classList.remove('hidden');
+        if (btnStore) btnStore.className = "w-full flex items-center gap-3 px-4 py-3 rounded-2xl text-sm font-bold bg-orange-50 dark:bg-orange-950/30 text-orange-600 dark:text-orange-400 border border-orange-200 dark:border-orange-800";
+      } else if (tabName === 'affiliate') {
+        document.getElementById('tab-affiliate').classList.remove('hidden');
+        if (btnAff) btnAff.className = "w-full flex items-center gap-3 px-4 py-3 rounded-2xl text-sm font-bold bg-rose-50 dark:bg-rose-950/30 text-rose-600 dark:text-rose-400 border border-rose-200 dark:border-rose-800";
+      } else if (tabName === 'admin') {
+        document.getElementById('tab-admin').classList.remove('hidden');
+      }
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function toggleDarkMode() { document.documentElement.classList.toggle('dark'); }
+
+    // SOCKS STORE
+    function filterSocksCategory(cat) {
+      currentSocksFilter = cat;
+      document.querySelectorAll('.sock-cat-btn').forEach(btn => {
+        btn.className = btn.dataset.category === cat 
+          ? "sock-cat-btn px-4 py-2 rounded-xl text-xs font-bold whitespace-nowrap bg-slate-900 text-white dark:bg-white dark:text-slate-900 shadow-sm"
+          : "sock-cat-btn px-4 py-2 rounded-xl text-xs font-bold whitespace-nowrap bg-slate-100 text-slate-600 hover:bg-slate-200 dark:bg-slate-900 dark:text-slate-400 dark:hover:bg-slate-800";
+      });
+      renderSocksGrid();
+    }
+
+    function renderSocksGrid() {
+      const container = document.getElementById('socks-grid');
+      const q = document.getElementById('socks-search')?.value.toLowerCase() || '';
+      const filtered = socksList.filter(item => (currentSocksFilter === 'All' || item.category === currentSocksFilter) && item.title.toLowerCase().includes(q));
+
+      if (filtered.length === 0) {
+        container.innerHTML = `<div class="col-span-full text-center py-12 text-slate-400"><p class="font-semibold text-sm">Tidak ada produk ditemukan.</p></div>`;
+        lucide.createIcons();
+        return;
+      }
+
+      container.innerHTML = filtered.map(item => `
+        <div class="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 overflow-hidden flex flex-col group hover:border-orange-500/50 transition-all shadow-sm">
+          <div class="relative aspect-square overflow-hidden bg-slate-100 dark:bg-slate-800">
+            <img src="${item.image}" alt="${item.title}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+            <span class="absolute top-2 left-2 px-2.5 py-1 rounded-lg bg-slate-900/80 backdrop-blur-md text-white text-[10px] font-bold">${item.category}</span>
+          </div>
+          <div class="p-4 flex flex-col flex-grow justify-between space-y-3">
+            <div>
+              <h3 class="font-bold text-xs sm:text-sm line-clamp-2">${item.title}</h3>
+              <p class="text-orange-600 dark:text-orange-400 font-extrabold text-sm sm:text-base mt-1">Rp ${item.price.toLocaleString('id-ID')}</p>
+            </div>
+            <div class="space-y-2 pt-1 border-t border-slate-100 dark:border-slate-800">
+              <button onclick="addToCart('${item.id}')" class="w-full py-2 rounded-xl bg-slate-900 dark:bg-white text-white dark:text-slate-900 font-bold text-xs hover:bg-slate-800 transition-colors flex items-center justify-center gap-1.5">
+                <i data-lucide="plus" class="w-3.5 h-3.5"></i> Keranjang
+              </button>
+              <a href="${item.shopeeUrl || PICKLAB_SHOPEE_URL}" target="_blank" class="w-full py-1.5 rounded-xl border border-shopee/30 text-shopee font-bold text-[11px] hover:bg-shopee/10 transition-colors flex items-center justify-center gap-1">
+                Shopee
+              </a>
+            </div>
+          </div>
+        </div>
+      `).join('');
+      lucide.createIcons();
+    }
+
+    // AFFILIATE
+    function filterAffiliateCategory(cat) {
+      currentAffiliateFilter = cat;
+      document.querySelectorAll('.aff-cat-btn').forEach(btn => {
+        btn.className = btn.dataset.category === cat 
+          ? "aff-cat-btn px-4 py-2 rounded-xl text-xs font-bold whitespace-nowrap bg-slate-900 text-white dark:bg-white dark:text-slate-900 shadow-sm"
+          : "aff-cat-btn px-4 py-2 rounded-xl text-xs font-bold whitespace-nowrap bg-slate-100 text-slate-600 hover:bg-slate-200 dark:bg-slate-900 dark:text-slate-400 dark:hover:bg-slate-800";
+      });
+      renderAffiliateGrid();
+    }
+
+    function trackAffiliateClick(id) {
+      const item = affiliateList.find(a => a.id === id);
+      if (item) { item.clicks = (item.clicks || 0) + 1; saveAffiliateToStorage(); }
+    }
+
+    function renderAffiliateGrid() {
+      const container = document.getElementById('affiliate-grid');
+      const q = document.getElementById('affiliate-search')?.value.toLowerCase() || '';
+      const filtered = affiliateList.filter(item => (currentAffiliateFilter === 'All' || item.category === currentAffiliateFilter) && item.title.toLowerCase().includes(q));
+
+      if (filtered.length === 0) {
+        container.innerHTML = `<div class="col-span-full text-center py-12 text-slate-400"><p class="font-semibold text-sm">Belum ada video.</p></div>`;
+        lucide.createIcons();
+        return;
+      }
+
+      container.innerHTML = filtered.map(item => `
+        <div class="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 overflow-hidden flex flex-col group hover:border-rose-500/50 transition-all shadow-sm">
+          <div class="relative aspect-video overflow-hidden bg-slate-100 dark:bg-slate-800">
+            <img src="${item.image}" alt="${item.title}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+            <div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent"></div>
+            <span class="absolute top-3 left-3 px-2.5 py-1 rounded-lg bg-rose-600 text-white text-[10px] font-extrabold uppercase">${item.badge || item.category}</span>
+            <div class="absolute bottom-3 left-3 right-3 flex justify-between items-end text-white">
+              <span class="text-xs font-semibold flex items-center gap-1"><i data-lucide="play-circle" class="w-4 h-4 text-rose-400"></i> Review</span>
+              <span class="text-[10px] text-slate-300 bg-slate-900/60 px-2 py-0.5 rounded">${item.clicks || 0} Clicks</span>
+            </div>
+          </div>
+          <div class="p-4 flex flex-col flex-grow justify-between space-y-4">
+            <div>
+              <h3 class="font-bold text-sm line-clamp-2">${item.title}</h3>
+              <p class="text-rose-600 dark:text-rose-400 font-extrabold text-base mt-1">Estimasi Rp ${item.price.toLocaleString('id-ID')}</p>
+            </div>
+            <div class="grid grid-cols-2 gap-2 pt-2 border-t border-slate-100 dark:border-slate-800">
+              <a href="${item.tiktokUrl || PICKLAB_TIKTOK_URL}" target="_blank" onclick="trackAffiliateClick('${item.id}')" class="py-2.5 rounded-xl bg-tiktok hover:bg-rose-600 text-white font-bold text-xs flex items-center justify-center gap-1.5 transition-colors">
+                Beli di TikTok
+              </a>
+              <a href="${item.tiktokUrl || PICKLAB_TIKTOK_URL}" target="_blank" onclick="trackAffiliateClick('${item.id}')" class="py-2.5 rounded-xl border border-slate-200 dark:border-slate-800 hover:bg-slate-100 text-slate-700 dark:text-slate-300 font-bold text-xs flex items-center justify-center gap-1.5 transition-colors">
+                Watch Review
+              </a>
+            </div>
+          </div>
+        </div>
+      `).join('');
+      lucide.createIcons();
+    }
+
+    // CART
+    function toggleCartModal(show) { document.getElementById('cart-drawer').classList.toggle('hidden', !show); }
+
+    function addToCart(sockId) {
+      const sock = socksList.find(s => s.id === sockId);
+      if (!sock) return;
+      const existing = cart.find(c => c.id === sockId);
+      if (existing) existing.qty += 1;
+      else cart.push({ id: sock.id, title: sock.title, price: sock.price, qty: 1, image: sock.image });
+      saveCartToStorage();
+      toggleCartModal(true);
+    }
+
+    function updateCartQty(sockId, delta) {
+      const item = cart.find(c => c.id === sockId);
+      if (!item) return;
+      item.qty += delta;
+      if (item.qty <= 0) cart = cart.filter(c => c.id !== sockId);
+      saveCartToStorage();
+    }
+
+    function updateCartUI() {
+      const container = document.getElementById('cart-items-container');
+      const badge = document.getElementById('cart-badge');
+      const totalQty = cart.reduce((sum, item) => sum + item.qty, 0);
+      const totalPrice = cart.reduce((sum, item) => sum + (item.price * item.qty), 0);
+
+      if (totalQty > 0) { badge.textContent = totalQty; badge.classList.remove('hidden'); badge.classList.add('flex'); }
+      else { badge.classList.add('hidden'); }
+
+      document.getElementById('cart-total-price').textContent = `Rp ${totalPrice.toLocaleString('id-ID')}`;
+
+      if (cart.length === 0) {
+        container.innerHTML = `<div class="text-center py-8 text-slate-400"><p class="text-xs font-semibold">Keranjang kosong.</p></div>`;
+        lucide.createIcons();
+        return;
+      }
+
+      container.innerHTML = cart.map(item => `
+        <div class="flex items-center gap-3 bg-slate-50 dark:bg-slate-800/50 p-3 rounded-2xl border border-slate-200 dark:border-slate-800">
+          <img src="${item.image}" class="w-12 h-12 rounded-xl object-cover">
+          <div class="flex-grow min-w-0">
+            <h4 class="font-bold text-xs truncate">${item.title}</h4>
+            <p class="text-orange-600 text-xs font-bold">Rp ${item.price.toLocaleString('id-ID')}</p>
+          </div>
+          <div class="flex items-center gap-1.5 bg-white dark:bg-slate-900 border border-slate-700 rounded-lg p-1">
+            <button onclick="updateCartQty('${item.id}', -1)" class="w-5 h-5 font-bold">-</button>
+            <span class="text-xs font-bold px-1">${item.qty}</span>
+            <button onclick="updateCartQty('${item.id}', 1)" class="w-5 h-5 font-bold">+</button>
+          </div>
+        </div>
+      `).join('');
+      lucide.createIcons();
+    }
+
+    function openCheckoutModal() {
+      if (cart.length === 0) { alert("Keranjang kosong!"); return; }
+      toggleCartModal(false);
+      document.getElementById('checkout-modal').classList.remove('hidden');
+    }
+    function closeCheckoutModal() { document.getElementById('checkout-modal').classList.add('hidden'); }
+
+    function processCheckout(e) {
+      e.preventDefault();
+      const order = {
+        id: 'ORD-' + Math.floor(100000 + Math.random() * 900000),
+        customerName: document.getElementById('cust-name').value,
+        phone: document.getElementById('cust-phone').value,
+        address: document.getElementById('cust-address').value,
+        items: [...cart],
+        total: cart.reduce((sum, item) => sum + (item.price * item.qty), 0),
+        date: new Date().toLocaleString('id-ID')
+      };
+      orderHistory.unshift(order);
+      saveOrdersToStorage();
+      cart = [];
+      saveCartToStorage();
+      closeCheckoutModal();
+      alert(`Pesanan ${order.id} berhasil dibuat!`);
+    }
+
+    // ADMIN
+    function openAdminAuth() {
+      const code = prompt("Masukkan Kode Akses Admin:", "admin123");
+      if (code === "admin123") switchTab('admin');
+      else if (code !== null) alert("Kode salah!");
+    }
+
+    function switchAdminSubtab(subtab) {
+      document.getElementById('admin-panel-socks').classList.add('hidden');
+      document.getElementById('admin-panel-affiliate').classList.add('hidden');
+      document.getElementById('admin-panel-orders').classList.add('hidden');
+
+      document.getElementById('admin-subnav-socks').className = "px-6 py-3 text-sm font-bold border-b-2 border-transparent text-slate-500";
+      document.getElementById('admin-subnav-affiliate').className = "px-6 py-3 text-sm font-bold border-b-2 border-transparent text-slate-500";
+      document.getElementById('admin-subnav-orders').className = "px-6 py-3 text-sm font-bold border-b-2 border-transparent text-slate-500";
+
+      if (subtab === 'socks') { document.getElementById('admin-panel-socks').classList.remove('hidden'); document.getElementById('admin-subnav-socks').className = "px-6 py-3 text-sm font-bold border-b-2 border-orange-500 text-orange-600"; }
+      else if (subtab === 'affiliate') { document.getElementById('admin-panel-affiliate').classList.remove('hidden'); document.getElementById('admin-subnav-affiliate').className = "px-6 py-3 text-sm font-bold border-b-2 border-rose-500 text-rose-600"; }
+      else if (subtab === 'orders') { document.getElementById('admin-panel-orders').classList.remove('hidden'); document.getElementById('admin-subnav-orders').className = "px-6 py-3 text-sm font-bold border-b-2 border-emerald-500 text-emerald-600"; }
+    }
+
+    function updateAdminDashboard() {
+      document.getElementById('stat-socks-stock').textContent = socksList.reduce((sum, item) => sum + Number(item.stock), 0);
+      document.getElementById('stat-affiliate-count').textContent = affiliateList.length;
+      document.getElementById('stat-affiliate-clicks').textContent = affiliateList.reduce((sum, item) => sum + (item.clicks || 0), 0);
+      document.getElementById('stat-orders-count').textContent = orderHistory.length;
+
+      document.getElementById('admin-socks-table-body').innerHTML = socksList.map(item => `
+        <tr class="hover:bg-slate-50 dark:hover:bg-slate-800/50">
+          <td class="p-4 flex items-center gap-3"><img src="${item.image}" class="w-9 h-9 rounded-lg object-cover"><span class="font-bold">${item.title}</span></td>
+          <td class="p-4">${item.category}</td>
+          <td class="p-4 font-bold text-orange-600">Rp ${item.price.toLocaleString('id-ID')}</td>
+          <td class="p-4">${item.stock}</td>
+          <td class="p-4"><span class="text-[10px] font-bold px-2 py-0.5 rounded bg-orange-100 text-orange-700">Shopee</span></td>
+          <td class="p-4 text-right space-x-2"><button onclick="editSockItem('${item.id}')" class="text-slate-500 hover:text-orange-500">Edit</button><button onclick="deleteSockItem('${item.id}')" class="text-slate-500 hover:text-rose-500">Hapus</button></td>
+        </tr>
+      `).join('');
+
+      document.getElementById('admin-affiliate-table-body').innerHTML = affiliateList.map(item => `
+        <tr class="hover:bg-slate-50 dark:hover:bg-slate-800/50">
+          <td class="p-4 flex items-center gap-3"><img src="${item.image}" class="w-9 h-9 rounded-lg object-cover"><span class="font-bold">${item.title}</span></td>
+          <td class="p-4">${item.category}</td>
+          <td class="p-4"><span class="text-[10px] font-bold px-2 py-0.5 rounded bg-rose-100 text-rose-700">TikTok</span></td>
+          <td class="p-4 font-bold text-indigo-500">${item.clicks || 0}</td>
+          <td class="p-4 text-right space-x-2"><button onclick="editAffiliateItem('${item.id}')" class="text-slate-500 hover:text-rose-500">Edit</button><button onclick="deleteAffiliateItem('${item.id}')" class="text-slate-500 hover:text-rose-500">Hapus</button></td>
+        </tr>
+      `).join('');
+
+      const ordersBody = document.getElementById('admin-orders-table-body');
+      if (orderHistory.length === 0) { ordersBody.innerHTML = `<tr><td colspan="5" class="p-6 text-center text-slate-400">Belum ada pesanan.</td></tr>`; }
+      else {
+        ordersBody.innerHTML = orderHistory.map(ord => `
+          <tr class="hover:bg-slate-50 dark:hover:bg-slate-800/50">
+            <td class="p-4 font-bold">${ord.id}</td>
+            <td class="p-4">${ord.customerName}<br><span class="text-[10px] text-slate-400">${ord.phone}</span></td>
+            <td class="p-4">${ord.items.map(i => `${i.title} (x${i.qty})`).join(', ')}</td>
+            <td class="p-4 font-bold text-emerald-600">Rp ${ord.total.toLocaleString('id-ID')}</td>
+            <td class="p-4 text-[10px] text-slate-400">${ord.date}</td>
+          </tr>
+        `).join('');
+      }
+      lucide.createIcons();
+    }
+
+    // CRUD modals helper
+    function openSocksModal() { document.getElementById('socks-form').reset(); document.getElementById('sock-id').value = ''; document.getElementById('sock-shopee-url').value = PICKLAB_SHOPEE_URL; document.getElementById('socks-modal').classList.remove('hidden'); }
+    function closeSocksModal() { document.getElementById('socks-modal').classList.add('hidden'); }
+    function saveSockItem(e) {
+      e.preventDefault();
+      const id = document.getElementById('sock-id').value;
+      const sock = {
+        id: id || 'sock-' + Date.now(),
+        title: document.getElementById('sock-title').value,
+        category: document.getElementById('sock-category').value,
+        stock: Number(document.getElementById('sock-stock').value),
+        price: Number(document.getElementById('sock-price').value),
+        image: document.getElementById('sock-image').value,
+        shopeeUrl: document.getElementById('sock-shopee-url').value || PICKLAB_SHOPEE_URL
+      };
+      if (id) { const idx = socksList.findIndex(s => s.id === id); if (idx !== -1) socksList[idx] = sock; }
+      else socksList.push(sock);
+      saveSocksToStorage();
+      closeSocksModal();
+    }
+    function editSockItem(id) {
+      const item = socksList.find(s => s.id === id);
+      if (!item) return;
+      document.getElementById('sock-id').value = item.id;
+      document.getElementById('sock-title').value = item.title;
+      document.getElementById('sock-category').value = item.category;
+      document.getElementById('sock-stock').value = item.stock;
+      document.getElementById('sock-price').value = item.price;
+      document.getElementById('sock-image').value = item.image;
+      document.getElementById('sock-shopee-url').value = item.shopeeUrl;
+      document.getElementById('socks-modal').classList.remove('hidden');
+    }
+    function deleteSockItem(id) { if (confirm("Hapus item?")) { socksList = socksList.filter(s => s.id !== id); saveSocksToStorage(); } }
+
+    function openAffiliateModal() { document.getElementById('affiliate-form').reset(); document.getElementById('aff-id').value = ''; document.getElementById('aff-tiktok-url').value = PICKLAB_TIKTOK_URL; document.getElementById('affiliate-modal').classList.remove('hidden'); }
+    function closeAffiliateModal() { document.getElementById('affiliate-modal').classList.add('hidden'); }
+    function saveAffiliateItem(e) {
+      e.preventDefault();
+      const id = document.getElementById('aff-id').value;
+      const existing = affiliateList.find(a => a.id === id);
+      const aff = {
+        id: id || 'aff-' + Date.now(),
+        title: document.getElementById('aff-title').value,
+        category: document.getElementById('aff-category').value,
+        badge: document.getElementById('aff-badge').value || 'Affiliate',
+        price: Number(document.getElementById('aff-price').value),
+        image: document.getElementById('aff-image-url') || document.getElementById('aff-image').value,
+        tiktokUrl: document.getElementById('aff-tiktok-url').value || PICKLAB_TIKTOK_URL,
+        clicks: existing ? existing.clicks : 0
+      };
+      if (id) { const idx = affiliateList.findIndex(a => a.id === id); if (idx !== -1) affiliateList[idx] = aff; }
+      else affiliateList.push(aff);
+      saveAffiliateToStorage();
+      closeAffiliateModal();
+    }
+    function editAffiliateItem(id) {
+      const item = affiliateList.find(a => a.id === id);
+      if (!item) return;
+      document.getElementById('aff-id').value = item.id;
+      document.getElementById('aff-title').value = item.title;
+      document.getElementById('aff-category').value = item.category;
+      document.getElementById('aff-badge').value = item.badge;
+      document.getElementById('aff-price').value = item.price;
+      document.getElementById('aff-image').value = item.image;
+      document.getElementById('aff-tiktok-url').value = item.tiktokUrl;
+      document.getElementById('affiliate-modal').classList.remove('hidden');
+    }
+    function deleteAffiliateItem(id) { if (confirm("Hapus video affiliate?")) { affiliateList = affiliateList.filter(a => a.id !== id); saveAffiliateToStorage(); } }
+  </script>
+</body>
+</html>
