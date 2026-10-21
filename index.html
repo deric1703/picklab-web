@@ -198,4 +198,347 @@
         <div class="flex items-center gap-2 overflow-x-auto pb-2 sm:pb-0 custom-scrollbar">
           <button onclick="filterSocksCategory('All')" class="sock-cat-btn px-4 py-2 rounded-xl text-xs font-bold whitespace-nowrap bg-slate-900 text-white dark:bg-white dark:text-slate-900 shadow-sm" data-category="All">Semua</button>
           <button onclick="filterSocksCategory('Ankle')" class="sock-cat-btn px-4 py-2 rounded-xl text-xs font-bold whitespace-nowrap bg-slate-100 text-slate-600 hover:bg-slate-200 dark:bg-slate-900 dark:text-slate-400" data-category="Ankle">Ankle</button>
-          <button onclick="filterSocksCategory('Crew')" class="sock-cat-btn px-4 py-2 rounded-xl text-xs font-bold whitespace-nowrap bg-slate-100 text-slate-600 hover:bg-slate-200 dark:bg-slate-900 dark
+          <button onclick="filterSocksCategory('Crew')" class="sock-cat-btn px-4 py-2 rounded-xl text-xs font-bold whitespace-nowrap bg-slate-100 text-slate-600 hover:bg-slate-200 dark:bg-slate-900 dark:text-slate-400" data-category="Crew">Crew</button>
+          <button onclick="filterSocksCategory('Athletic')" class="sock-cat-btn px-4 py-2 rounded-xl text-xs font-bold whitespace-nowrap bg-slate-100 text-slate-600 hover:bg-slate-200 dark:bg-slate-900 dark:text-slate-400" data-category="Athletic">Olahraga</button>
+          <button onclick="filterSocksCategory('Patterned')" class="sock-cat-btn px-4 py-2 rounded-xl text-xs font-bold whitespace-nowrap bg-slate-100 text-slate-600 hover:bg-slate-200 dark:bg-slate-900 dark:text-slate-400" data-category="Patterned">Motif</button>
+        </div>
+
+        <div class="relative min-w-[240px]">
+          <i data-lucide="search" class="w-4 h-4 absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400"></i>
+          <input type="text" id="socks-search" oninput="renderSocksGrid()" placeholder="Cari kaos kaki..." class="w-full pl-10 pr-4 py-2 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-xs font-medium focus:outline-none focus:ring-2 focus:ring-orange-500">
+        </div>
+      </div>
+
+      <div id="socks-grid" class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6"></div>
+    </section>
+
+    <!-- TAB 2: TIKTOK AFFILIATE -->
+    <section id="tab-affiliate" class="hidden space-y-6">
+      <div class="flex flex-col sm:flex-row gap-4 items-stretch sm:items-center justify-between">
+        <div class="flex items-center gap-2 overflow-x-auto pb-2 sm:pb-0 custom-scrollbar">
+          <button onclick="filterAffiliateCategory('All')" class="aff-cat-btn px-4 py-2 rounded-xl text-xs font-bold whitespace-nowrap bg-slate-900 text-white dark:bg-white dark:text-slate-900" data-category="All">Semua Video</button>
+          <button onclick="filterAffiliateCategory('Tech')" class="aff-cat-btn px-4 py-2 rounded-xl text-xs font-bold whitespace-nowrap bg-slate-100 text-slate-600 hover:bg-slate-200 dark:bg-slate-900 dark:text-slate-400" data-category="Tech">Tech</button>
+          <button onclick="filterAffiliateCategory('Lifestyle')" class="aff-cat-btn px-4 py-2 rounded-xl text-xs font-bold whitespace-nowrap bg-slate-100 text-slate-600 hover:bg-slate-200 dark:bg-slate-900 dark:text-slate-400" data-category="Lifestyle">Lifestyle</button>
+          <button onclick="filterAffiliateCategory('Fashion')" class="aff-cat-btn px-4 py-2 rounded-xl text-xs font-bold whitespace-nowrap bg-slate-100 text-slate-600 hover:bg-slate-200 dark:bg-slate-900 dark:text-slate-400" data-category="Fashion">Fashion</button>
+        </div>
+
+        <div class="relative min-w-[240px]">
+          <i data-lucide="search" class="w-4 h-4 absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400"></i>
+          <input type="text" id="affiliate-search" oninput="renderAffiliateGrid()" placeholder="Cari ulasan video..." class="w-full pl-10 pr-4 py-2 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-xs font-medium focus:outline-none focus:ring-2 focus:ring-rose-500">
+        </div>
+      </div>
+
+      <div id="affiliate-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"></div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="mt-auto border-t border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 transition-colors">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+      <div class="flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500">
+        <div class="flex items-center gap-2">
+          <span class="font-bold text-slate-800 dark:text-slate-200">PickLab Official</span>
+          <span>&copy; 2026 PickLab ID. Powered by Google Sheets.</span>
+        </div>
+        <div class="flex items-center gap-4">
+          <a href="https://www.tiktok.com/@picklabid" target="_blank" class="hover:text-rose-500 transition-colors font-semibold">TikTok @picklabid</a>
+          <a href="https://shopee.co.id/picklabs?entryPoint=ShopBySearch&searchKeyword=picklabs" target="_blank" class="hover:text-orange-500 transition-colors font-semibold">Shopee PickLab</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- CART DRAWER -->
+  <div id="cart-drawer" class="fixed inset-0 z-50 hidden">
+    <div class="absolute inset-0 bg-slate-900/60 backdrop-blur-sm" onclick="toggleCartModal(false)"></div>
+    <div class="absolute right-0 top-0 bottom-0 w-full max-w-md bg-white dark:bg-slate-900 p-6 flex flex-col justify-between shadow-2xl border-l border-slate-200 dark:border-slate-800">
+      <div>
+        <div class="flex items-center justify-between pb-4 border-b border-slate-200 dark:border-slate-800">
+          <h3 class="text-lg font-bold flex items-center gap-2"><i data-lucide="shopping-bag" class="w-5 h-5 text-orange-500"></i> Keranjang</h3>
+          <button onclick="toggleCartModal(false)" class="text-slate-400 hover:text-slate-600"><i data-lucide="x" class="w-5 h-5"></i></button>
+        </div>
+        <div id="cart-items-container" class="py-4 space-y-4 max-h-[60vh] overflow-y-auto custom-scrollbar"></div>
+      </div>
+      <div class="border-t border-slate-200 dark:border-slate-800 pt-4 space-y-3">
+        <div class="flex items-center justify-between text-sm font-bold"><span>Total</span><span id="cart-total-price" class="text-orange-600 text-lg">Rp 0</span></div>
+        <button onclick="openCheckoutModal()" class="w-full py-3 rounded-xl bg-orange-600 hover:bg-orange-700 text-white font-bold text-sm shadow-lg">Lanjut Checkout</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- CHECKOUT MODAL -->
+  <div id="checkout-modal" class="fixed inset-0 z-50 hidden flex items-center justify-center p-4">
+    <div class="absolute inset-0 bg-slate-900/60 backdrop-blur-sm" onclick="closeCheckoutModal()"></div>
+    <div class="relative w-full max-w-lg bg-white dark:bg-slate-900 rounded-3xl p-6 shadow-2xl border border-slate-200 dark:border-slate-800 space-y-4">
+      <div class="flex justify-between items-center pb-2 border-b border-slate-200 dark:border-slate-800"><h3 class="text-lg font-bold">Checkout Pesanan</h3><button onclick="closeCheckoutModal()"><i data-lucide="x" class="w-5 h-5"></i></button></div>
+      <form id="checkout-form" onsubmit="processCheckout(event)" class="space-y-3 text-xs">
+        <div><label class="block font-bold mb-1">Nama Lengkap</label><input type="text" id="cust-name" required class="w-full px-3 py-2 rounded-xl bg-slate-50 dark:bg-slate-800 border border-slate-700"></div>
+        <div><label class="block font-bold mb-1">Nomor WhatsApp</label><input type="tel" id="cust-phone" required class="w-full px-3 py-2 rounded-xl bg-slate-50 dark:bg-slate-800 border border-slate-700"></div>
+        <div><label class="block font-bold mb-1">Alamat Pengiriman</label><textarea id="cust-address" required rows="2" class="w-full px-3 py-2 rounded-xl bg-slate-50 dark:bg-slate-800 border border-slate-700"></textarea></div>
+        <div class="pt-2"><button type="submit" class="w-full py-3 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold">Konfirmasi Pesanan</button></div>
+      </form>
+    </div>
+  </div>
+
+  <!-- JAVASCRIPT LOGIC WITH BULLETPROOF CSV PARSER -->
+  <script>
+    let socksList = [];
+    let affiliateList = [];
+    let cart = JSON.parse(localStorage.getItem('picklab_cart')) || [];
+    let currentSocksFilter = 'All';
+    let currentAffiliateFilter = 'All';
+    let currentSlide = 0;
+    const totalSlides = 2;
+
+    window.addEventListener('DOMContentLoaded', () => {
+      fetchGoogleSheetData();
+      setInterval(() => {
+        currentSlide = (currentSlide + 1) % totalSlides;
+        updateCarousel();
+      }, 5000);
+    });
+
+    async function fetchGoogleSheetData() {
+      try {
+        const response = await fetch(GOOGLE_SHEET_CSV_URL);
+        const dataText = await response.text();
+        const rows = parseRobustCSV(dataText);
+
+        socksList = [];
+        affiliateList = [];
+
+        // Loop mulai dari baris ke-1 (setelah header)
+        for (let i = 1; i < rows.length; i++) {
+          const r = rows[i];
+          if (r.length >= 8 && r[0].trim() !== '') {
+            const item = {
+              id: r[0].trim(),
+              title: r[1].trim(),
+              category: r[2].trim(),
+              price: Number(r[3]) || 0,
+              stock: Number(r[4]) || 0,
+              image: r[5].trim(),
+              url: r[6].trim(),
+              type: r[7].trim().toLowerCase()
+            };
+
+            if (item.type === 'store') {
+              socksList.push(item);
+            } else if (item.type === 'affiliate') {
+              affiliateList.push({ ...item, clicks: 0 });
+            }
+          }
+        }
+
+        renderSocksGrid();
+        renderAffiliateGrid();
+        updateCartUI();
+        lucide.createIcons();
+      } catch (error) {
+        console.error("Gagal mengambil data dari Google Sheets:", error);
+      }
+    }
+
+    // Parser CSV standar yang aman menangani koma di dalam URL/teks
+    function parseRobustCSV(text) {
+      let lines = text.split('\n');
+      let result = [];
+      for (let line of lines) {
+        if (!line.trim()) continue;
+        let row = [];
+        let inQuote = false;
+        let entry = '';
+        for (let i = 0; i < line.length; i++) {
+          let char = line[i];
+          if (char === '"') {
+            inQuote = !inQuote;
+          } else if (char === ',' && !inQuote) {
+            row.push(entry);
+            entry = '';
+          } else {
+            entry += char;
+          }
+        }
+        row.push(entry);
+        result.push(row.map(val => val.replace(/^"|"$/g, '').trim()));
+      }
+      return result;
+    }
+
+    function slideBanner(direction) {
+      currentSlide = (currentSlide + direction + totalSlides) % totalSlides;
+      updateCarousel();
+    }
+    function updateCarousel() {
+      const carousel = document.getElementById('hero-carousel');
+      if (carousel) carousel.style.transform = `translateX(-${currentSlide * 100}%)`;
+    }
+
+    function toggleSideMenu(show) { document.getElementById('side-menu').classList.toggle('hidden', !show); }
+
+    function switchTab(tabName) {
+      document.getElementById('tab-store').classList.add('hidden');
+      document.getElementById('tab-affiliate').classList.add('hidden');
+
+      const btnStore = document.getElementById('menu-btn-store');
+      const btnAff = document.getElementById('menu-btn-affiliate');
+      if (btnStore) btnStore.className = "w-full flex items-center gap-3 px-4 py-3 rounded-2xl text-sm font-bold text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800";
+      if (btnAff) btnAff.className = "w-full flex items-center gap-3 px-4 py-3 rounded-2xl text-sm font-bold text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800";
+
+      if (tabName === 'store') {
+        document.getElementById('tab-store').classList.remove('hidden');
+        if (btnStore) btnStore.className = "w-full flex items-center gap-3 px-4 py-3 rounded-2xl text-sm font-bold bg-orange-50 dark:bg-orange-950/30 text-orange-600 dark:text-orange-400 border border-orange-200 dark:border-orange-800";
+      } else if (tabName === 'affiliate') {
+        document.getElementById('tab-affiliate').classList.remove('hidden');
+        if (btnAff) btnAff.className = "w-full flex items-center gap-3 px-4 py-3 rounded-2xl text-sm font-bold bg-rose-50 dark:bg-rose-950/30 text-rose-600 dark:text-rose-400 border border-rose-200 dark:border-rose-800";
+      }
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function toggleDarkMode() { document.documentElement.classList.toggle('dark'); }
+
+    function filterSocksCategory(cat) {
+      currentSocksFilter = cat;
+      renderSocksGrid();
+    }
+    function renderSocksGrid() {
+      const container = document.getElementById('socks-grid');
+      const q = document.getElementById('socks-search')?.value.toLowerCase() || '';
+      const filtered = socksList.filter(item => (currentSocksFilter === 'All' || item.category.toLowerCase() === currentSocksFilter.toLowerCase()) && item.title.toLowerCase().includes(q));
+
+      if (filtered.length === 0) {
+        container.innerHTML = `<div class="col-span-full text-center py-12 text-slate-400"><p class="font-semibold text-sm">Belum ada produk di Google Sheets.</p></div>`;
+        lucide.createIcons();
+        return;
+      }
+
+      container.innerHTML = filtered.map(item => `
+        <div class="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 overflow-hidden flex flex-col group hover:border-orange-500/50 transition-all shadow-sm">
+          <div class="relative aspect-square overflow-hidden bg-slate-100 dark:bg-slate-800">
+            <img src="${item.image}" alt="${item.title}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+            <span class="absolute top-2 left-2 px-2.5 py-1 rounded-lg bg-slate-900/80 backdrop-blur-md text-white text-[10px] font-bold">${item.category}</span>
+          </div>
+          <div class="p-4 flex flex-col flex-grow justify-between space-y-3">
+            <div>
+              <h3 class="font-bold text-xs sm:text-sm line-clamp-2">${item.title}</h3>
+              <p class="text-orange-600 dark:text-orange-400 font-extrabold text-sm sm:text-base mt-1">Rp ${item.price.toLocaleString('id-ID')}</p>
+            </div>
+            <div class="space-y-2 pt-1 border-t border-slate-100 dark:border-slate-800">
+              <button onclick="addToCart('${item.id}')" class="w-full py-2 rounded-xl bg-slate-900 dark:bg-white text-white dark:text-slate-900 font-bold text-xs hover:bg-slate-800 transition-colors flex items-center justify-center gap-1.5">
+                <i data-lucide="plus" class="w-3.5 h-3.5"></i> Keranjang
+              </button>
+              <a href="${item.url || PICKLAB_SHOPEE_URL}" target="_blank" class="w-full py-1.5 rounded-xl border border-shopee/30 text-shopee font-bold text-[11px] hover:bg-shopee/10 transition-colors flex items-center justify-center gap-1">Shopee</a>
+            </div>
+          </div>
+        </div>
+      `).join('');
+      lucide.createIcons();
+    }
+
+    function filterAffiliateCategory(cat) {
+      currentAffiliateFilter = cat;
+      renderAffiliateGrid();
+    }
+    function renderAffiliateGrid() {
+      const container = document.getElementById('affiliate-grid');
+      const q = document.getElementById('affiliate-search')?.value.toLowerCase() || '';
+      const filtered = affiliateList.filter(item => (currentAffiliateFilter === 'All' || item.category.toLowerCase() === currentAffiliateFilter.toLowerCase()) && item.title.toLowerCase().includes(q));
+
+      if (filtered.length === 0) {
+        container.innerHTML = `<div class="col-span-full text-center py-12 text-slate-400"><p class="font-semibold text-sm">Belum ada konten affiliate di Google Sheets.</p></div>`;
+        lucide.createIcons();
+        return;
+      }
+
+      container.innerHTML = filtered.map(item => `
+        <div class="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 overflow-hidden flex flex-col group hover:border-rose-500/50 transition-all shadow-sm">
+          <div class="relative aspect-video overflow-hidden bg-slate-100 dark:bg-slate-800">
+            <img src="${item.image}" alt="${item.title}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+            <div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent"></div>
+            <span class="absolute top-3 left-3 px-2.5 py-1 rounded-lg bg-rose-600 text-white text-[10px] font-extrabold uppercase">${item.category}</span>
+          </div>
+          <div class="p-4 flex flex-col flex-grow justify-between space-y-4">
+            <div>
+              <h3 class="font-bold text-sm line-clamp-2">${item.title}</h3>
+              <p class="text-rose-600 dark:text-rose-400 font-extrabold text-base mt-1">Estimasi Rp ${item.price.toLocaleString('id-ID')}</p>
+            </div>
+            <a href="${item.url || PICKLAB_TIKTOK_URL}" target="_blank" class="w-full py-2.5 rounded-xl bg-tiktok hover:bg-rose-600 text-white font-bold text-xs flex items-center justify-center gap-1.5 transition-colors">
+              Beli di TikTok
+            </a>
+          </div>
+        </div>
+      `).join('');
+      lucide.createIcons();
+    }
+
+    function toggleCartModal(show) { document.getElementById('cart-drawer').classList.toggle('hidden', !show); }
+    function addToCart(sockId) {
+      const sock = socksList.find(s => s.id === sockId);
+      if (!sock) return;
+      const existing = cart.find(c => c.id === sockId);
+      if (existing) existing.qty += 1;
+      else cart.push({ id: sock.id, title: sock.title, price: sock.price, qty: 1, image: sock.image });
+      localStorage.setItem('picklab_cart', JSON.stringify(cart));
+      updateCartUI();
+      toggleCartModal(true);
+    }
+    function updateCartQty(sockId, delta) {
+      const item = cart.find(c => c.id === sockId);
+      if (!item) return;
+      item.qty += delta;
+      if (item.qty <= 0) cart = cart.filter(c => c.id !== sockId);
+      localStorage.setItem('picklab_cart', JSON.stringify(cart));
+      updateCartUI();
+    }
+    function updateCartUI() {
+      const container = document.getElementById('cart-items-container');
+      const badge = document.getElementById('cart-badge');
+      const totalQty = cart.reduce((sum, item) => sum + item.qty, 0);
+      const totalPrice = cart.reduce((sum, item) => sum + (item.price * item.qty), 0);
+
+      if (totalQty > 0) { badge.textContent = totalQty; badge.classList.remove('hidden'); badge.classList.add('flex'); }
+      else { badge.classList.add('hidden'); }
+
+      document.getElementById('cart-total-price').textContent = `Rp ${totalPrice.toLocaleString('id-ID')}`;
+
+      if (cart.length === 0) {
+        container.innerHTML = `<div class="text-center py-8 text-slate-400"><p class="text-xs font-semibold">Keranjang kosong.</p></div>`;
+        lucide.createIcons();
+        return;
+      }
+
+      container.innerHTML = cart.map(item => `
+        <div class="flex items-center gap-3 bg-slate-50 dark:bg-slate-800/50 p-3 rounded-2xl border border-slate-200 dark:border-slate-800">
+          <img src="${item.image}" class="w-12 h-12 rounded-xl object-cover">
+          <div class="flex-grow min-w-0">
+            <h4 class="font-bold text-xs truncate">${item.title}</h4>
+            <p class="text-orange-600 text-xs font-bold">Rp ${item.price.toLocaleString('id-ID')}</p>
+          </div>
+          <div class="flex items-center gap-1.5 bg-white dark:bg-slate-900 border border-slate-700 rounded-lg p-1">
+            <button onclick="updateCartQty('${item.id}', -1)" class="w-5 h-5 font-bold">-</button>
+            <span class="text-xs font-bold px-1">${item.qty}</span>
+            <button onclick="updateCartQty('${item.id}', 1)" class="w-5 h-5 font-bold">+</button>
+          </div>
+        </div>
+      `).join('');
+      lucide.createIcons();
+    }
+    function openCheckoutModal() {
+      if (cart.length === 0) { alert("Keranjang kosong!"); return; }
+      toggleCartModal(false);
+      document.getElementById('checkout-modal').classList.remove('hidden');
+    }
+    function closeCheckoutModal() { document.getElementById('checkout-modal').classList.add('hidden'); }
+    function processCheckout(e) {
+      e.preventDefault();
+      const orderId = 'ORD-' + Math.floor(100000 + Math.random() * 900000);
+      alert(`Pesanan ${orderId} berhasil dibuat!`);
+      cart = [];
+      localStorage.setItem('picklab_cart', JSON.stringify(cart));
+      updateCartUI();
+      closeCheckoutModal();
+    }
+  </script>
+</body>
+</html>
