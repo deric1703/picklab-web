@@ -73,7 +73,7 @@
             <i data-lucide="menu" class="w-5 h-5"></i>
           </button>
 
-          <div class="flex items-center gap-3 cursor-pointer" onclick="switchTab('store')">
+          <div class="flex items-center gap-3 cursor-pointer" onclick="switchTab('product')">
             <img src="logo.png" alt="Logo PickLab" class="w-10 h-10 rounded-xl object-cover shadow-md">
             <div>
               <span class="text-xl font-black tracking-tight bg-gradient-to-r from-slate-900 to-slate-700 dark:from-white dark:to-slate-300 bg-clip-text text-transparent">
@@ -106,7 +106,7 @@
     </div>
   </header>
 
-  <!-- SLIDE-OUT NAVIGATION DRAWER -->
+  <!-- SLIDE-OUT NAVIGATION DRAWER (BARU) -->
   <div id="side-menu" class="fixed inset-0 z-50 hidden">
     <div class="absolute inset-0 bg-slate-900/60 backdrop-blur-sm transition-opacity" onclick="toggleSideMenu(false)"></div>
     <div class="absolute left-0 top-0 bottom-0 w-80 bg-white dark:bg-slate-900 p-6 flex flex-col justify-between shadow-2xl border-r border-slate-200 dark:border-slate-800">
@@ -125,14 +125,24 @@
         </div>
 
         <nav class="space-y-2">
-          <button onclick="switchTab('store'); toggleSideMenu(false);" id="menu-btn-store" class="w-full flex items-center gap-3 px-4 py-3 rounded-2xl text-sm font-bold transition-all bg-orange-50 dark:bg-orange-950/30 text-orange-600 dark:text-orange-400 border border-orange-200 dark:border-orange-800">
-            <i data-lucide="shopping-bag" class="w-5 h-5"></i>
-            <span>PickLab Socks Store</span>
+          <button onclick="switchTab('flashsale'); toggleSideMenu(false);" id="menu-btn-flashsale" class="w-full flex items-center gap-3 px-4 py-3 rounded-2xl text-sm font-bold transition-all text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800">
+            <i data-lucide="zap" class="w-5 h-5 text-amber-500"></i>
+            <span>Flash Sale</span>
+          </button>
+
+          <button onclick="switchTab('discount'); toggleSideMenu(false);" id="menu-btn-discount" class="w-full flex items-center gap-3 px-4 py-3 rounded-2xl text-sm font-bold transition-all text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800">
+            <i data-lucide="tag" class="w-5 h-5 text-rose-500"></i>
+            <span>Discount</span>
           </button>
           
-          <button onclick="switchTab('affiliate'); toggleSideMenu(false);" id="menu-btn-affiliate" class="w-full flex items-center gap-3 px-4 py-3 rounded-2xl text-sm font-bold transition-all text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800">
-            <i data-lucide="video" class="w-5 h-5"></i>
-            <span>TikTok Affiliate Hub</span>
+          <button onclick="switchTab('product'); toggleSideMenu(false);" id="menu-btn-product" class="w-full flex items-center gap-3 px-4 py-3 rounded-2xl text-sm font-bold transition-all bg-orange-50 dark:bg-orange-950/30 text-orange-600 dark:text-orange-400 border border-orange-200 dark:border-orange-800">
+            <i data-lucide="shopping-bag" class="w-5 h-5"></i>
+            <span>Product</span>
+          </button>
+
+          <button onclick="switchTab('review'); toggleSideMenu(false);" id="menu-btn-review" class="w-full flex items-center gap-3 px-4 py-3 rounded-2xl text-sm font-bold transition-all text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800">
+            <i data-lucide="video" class="w-5 h-5 text-tiktok"></i>
+            <span>Review Product</span>
           </button>
         </nav>
       </div>
@@ -166,12 +176,12 @@
         <div class="w-full flex-shrink-0 bg-gradient-to-r from-orange-600 via-rose-600 to-indigo-700 text-white p-6 sm:p-10 relative">
           <div class="relative z-10 max-w-2xl space-y-4">
             <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 backdrop-blur-md text-xs font-semibold border border-white/20">
-              <i data-lucide="sparkles" class="w-3.5 h-3.5 text-yellow-300"></i> PickLab Socks Collection
+              <i data-lucide="sparkles" class="w-3.5 h-3.5 text-yellow-300"></i> PickLab Collection
             </div>
             <h1 class="text-3xl sm:text-5xl font-black tracking-tight leading-tight">Kenyamanan Maksimal & Gaya Trendy di Setiap Langkah.</h1>
-            <p class="text-slate-100 text-sm sm:text-base font-normal">Koleksi kaos kaki premium PickLab. Kelola produk otomatis dari Google Sheets.</p>
+            <p class="text-slate-100 text-sm sm:text-base font-normal">Koleksi produk premium PickLab. Kelola produk otomatis dari Google Sheets.</p>
             <div class="pt-2 flex flex-wrap gap-3">
-              <a href="#socks-catalog" class="px-5 py-2.5 rounded-xl bg-white text-slate-900 font-bold text-sm hover:bg-slate-100 transition-colors shadow-lg">Eksplor Katalog</a>
+              <button onclick="switchTab('product')" class="px-5 py-2.5 rounded-xl bg-white text-slate-900 font-bold text-sm hover:bg-slate-100 transition-colors shadow-lg">Eksplor Produk</button>
               <a href="https://shopee.co.id/picklabs?entryPoint=ShopBySearch&searchKeyword=picklabs" target="_blank" class="px-5 py-2.5 rounded-xl bg-shopee/90 text-white font-bold text-sm hover:bg-shopee transition-colors flex items-center gap-2 shadow-lg"><i data-lucide="shopping-bag" class="w-4 h-4"></i> Shopee PickLab</a>
             </div>
           </div>
@@ -182,53 +192,77 @@
             <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-tiktok/20 text-tiktok text-xs font-semibold border border-tiktok/30">
               <i data-lucide="video" class="w-3.5 h-3.5"></i> TikTok Official Account @picklabid
             </div>
-            <h1 class="text-3xl sm:text-5xl font-black tracking-tight leading-tight">Rekomendasi Produk Viral & Review TikTok PickLab</h1>
-            <p class="text-slate-300 text-sm sm:text-base">Temukan produk rekomendasi gadget dan lifestyle terbaik.</p>
+            <h1 class="text-3xl sm:text-5xl font-black tracking-tight leading-tight">Review Produk Viral & Rekomendasi Pilihan</h1>
+            <p class="text-slate-300 text-sm sm:text-base">Temukan ulasan video produk pilihan terbaik.</p>
             <div class="pt-2 flex flex-wrap gap-3">
-              <button onclick="switchTab('affiliate')" class="px-5 py-2.5 rounded-xl bg-rose-600 hover:bg-rose-700 text-white font-bold text-sm transition-colors shadow-lg">Lihat Semua Video</button>
+              <button onclick="switchTab('review')" class="px-5 py-2.5 rounded-xl bg-rose-600 hover:bg-rose-700 text-white font-bold text-sm transition-colors shadow-lg">Lihat Review Product</button>
             </div>
           </div>
         </div>
       </div>
     </div>
 
-    <!-- TAB 1: SOCKS STORE -->
-    <section id="tab-store" class="space-y-6">
-      <div id="socks-catalog" class="flex flex-col sm:flex-row gap-4 items-stretch sm:items-center justify-between pt-2">
+    <!-- MAIN PRODUCT / STORE TAB -->
+    <section id="tab-product" class="space-y-6">
+      <div class="flex flex-col sm:flex-row gap-4 items-stretch sm:items-center justify-between pt-2">
         <div class="flex items-center gap-2 overflow-x-auto pb-2 sm:pb-0 custom-scrollbar">
-          <button onclick="filterSocksCategory('All')" class="sock-cat-btn px-4 py-2 rounded-xl text-xs font-bold whitespace-nowrap bg-slate-900 text-white dark:bg-white dark:text-slate-900 shadow-sm" data-category="All">Semua</button>
-          <button onclick="filterSocksCategory('Ankle')" class="sock-cat-btn px-4 py-2 rounded-xl text-xs font-bold whitespace-nowrap bg-slate-100 text-slate-600 hover:bg-slate-200 dark:bg-slate-900 dark:text-slate-400" data-category="Ankle">Ankle</button>
-          <button onclick="filterSocksCategory('Crew')" class="sock-cat-btn px-4 py-2 rounded-xl text-xs font-bold whitespace-nowrap bg-slate-100 text-slate-600 hover:bg-slate-200 dark:bg-slate-900 dark:text-slate-400" data-category="Crew">Crew</button>
-          <button onclick="filterSocksCategory('Athletic')" class="sock-cat-btn px-4 py-2 rounded-xl text-xs font-bold whitespace-nowrap bg-slate-100 text-slate-600 hover:bg-slate-200 dark:bg-slate-900 dark:text-slate-400" data-category="Athletic">Olahraga</button>
-          <button onclick="filterSocksCategory('Patterned')" class="sock-cat-btn px-4 py-2 rounded-xl text-xs font-bold whitespace-nowrap bg-slate-100 text-slate-600 hover:bg-slate-200 dark:bg-slate-900 dark:text-slate-400" data-category="Patterned">Motif</button>
+          <button onclick="filterCategory('All')" class="cat-btn px-4 py-2 rounded-xl text-xs font-bold whitespace-nowrap bg-slate-900 text-white dark:bg-white dark:text-slate-900 shadow-sm" data-category="All">Semua Produk</button>
+          <button onclick="filterCategory('Ankle')" class="cat-btn px-4 py-2 rounded-xl text-xs font-bold whitespace-nowrap bg-slate-100 text-slate-600 hover:bg-slate-200 dark:bg-slate-900 dark:text-slate-400" data-category="Ankle">Ankle</button>
+          <button onclick="filterCategory('Crew')" class="cat-btn px-4 py-2 rounded-xl text-xs font-bold whitespace-nowrap bg-slate-100 text-slate-600 hover:bg-slate-200 dark:bg-slate-900 dark:text-slate-400" data-category="Crew">Crew</button>
+          <button onclick="filterCategory('Athletic')" class="cat-btn px-4 py-2 rounded-xl text-xs font-bold whitespace-nowrap bg-slate-100 text-slate-600 hover:bg-slate-200 dark:bg-slate-900 dark:text-slate-400" data-category="Athletic">Olahraga</button>
+          <button onclick="filterCategory('Patterned')" class="cat-btn px-4 py-2 rounded-xl text-xs font-bold whitespace-nowrap bg-slate-100 text-slate-600 hover:bg-slate-200 dark:bg-slate-900 dark:text-slate-400" data-category="Patterned">Motif</button>
         </div>
 
         <div class="relative min-w-[240px]">
           <i data-lucide="search" class="w-4 h-4 absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400"></i>
-          <input type="text" id="socks-search" oninput="renderSocksGrid()" placeholder="Cari kaos kaki..." class="w-full pl-10 pr-4 py-2 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-xs font-medium focus:outline-none focus:ring-2 focus:ring-orange-500">
+          <input type="text" id="main-search" oninput="renderCurrentGrid()" placeholder="Cari produk..." class="w-full pl-10 pr-4 py-2 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-xs font-medium focus:outline-none focus:ring-2 focus:ring-orange-500">
         </div>
       </div>
 
-      <div id="socks-grid" class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6"></div>
+      <div id="main-grid" class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6"></div>
     </section>
 
-    <!-- TAB 2: TIKTOK AFFILIATE -->
-    <section id="tab-affiliate" class="hidden space-y-6">
+    <!-- FLASH SALE TAB -->
+    <section id="tab-flashsale" class="hidden space-y-6">
+      <div class="flex items-center gap-3 bg-gradient-to-r from-amber-500 to-orange-600 p-4 rounded-2xl text-white shadow-lg">
+        <i data-lucide="zap" class="w-8 h-8 animate-bounce"></i>
+        <div>
+          <h2 class="text-lg font-black tracking-tight">Flash Sale Terbatas!</h2>
+          <p class="text-xs text-amber-100">Dapatkan produk pilihan dengan penawaran waktu terbatas.</p>
+        </div>
+      </div>
+      <div id="flashsale-grid" class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6"></div>
+    </section>
+
+    <!-- DISCOUNT TAB -->
+    <section id="tab-discount" class="hidden space-y-6">
+      <div class="flex items-center gap-3 bg-gradient-to-r from-rose-600 to-pink-600 p-4 rounded-2xl text-white shadow-lg">
+        <i data-lucide="tag" class="w-8 h-8"></i>
+        <div>
+          <h2 class="text-lg font-black tracking-tight">Diskon Spesial Hari Ini</h2>
+          <p class="text-xs text-rose-100">Koleksi produk hemat dengan potongan harga spesial.</p>
+        </div>
+      </div>
+      <div id="discount-grid" class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6"></div>
+    </section>
+
+    <!-- REVIEW PRODUCT (AFFILIATE) TAB -->
+    <section id="tab-review" class="hidden space-y-6">
       <div class="flex flex-col sm:flex-row gap-4 items-stretch sm:items-center justify-between">
         <div class="flex items-center gap-2 overflow-x-auto pb-2 sm:pb-0 custom-scrollbar">
-          <button onclick="filterAffiliateCategory('All')" class="aff-cat-btn px-4 py-2 rounded-xl text-xs font-bold whitespace-nowrap bg-slate-900 text-white dark:bg-white dark:text-slate-900" data-category="All">Semua Video</button>
-          <button onclick="filterAffiliateCategory('Tech')" class="aff-cat-btn px-4 py-2 rounded-xl text-xs font-bold whitespace-nowrap bg-slate-100 text-slate-600 hover:bg-slate-200 dark:bg-slate-900 dark:text-slate-400" data-category="Tech">Tech</button>
-          <button onclick="filterAffiliateCategory('Lifestyle')" class="aff-cat-btn px-4 py-2 rounded-xl text-xs font-bold whitespace-nowrap bg-slate-100 text-slate-600 hover:bg-slate-200 dark:bg-slate-900 dark:text-slate-400" data-category="Lifestyle">Lifestyle</button>
-          <button onclick="filterAffiliateCategory('Fashion')" class="aff-cat-btn px-4 py-2 rounded-xl text-xs font-bold whitespace-nowrap bg-slate-100 text-slate-600 hover:bg-slate-200 dark:bg-slate-900 dark:text-slate-400" data-category="Fashion">Fashion</button>
+          <button onclick="filterReviewCategory('All')" class="rev-cat-btn px-4 py-2 rounded-xl text-xs font-bold whitespace-nowrap bg-slate-900 text-white dark:bg-white dark:text-slate-900" data-category="All">Semua Review</button>
+          <button onclick="filterReviewCategory('Tech')" class="rev-cat-btn px-4 py-2 rounded-xl text-xs font-bold whitespace-nowrap bg-slate-100 text-slate-600 hover:bg-slate-200 dark:bg-slate-900 dark:text-slate-400" data-category="Tech">Tech</button>
+          <button onclick="filterReviewCategory('Lifestyle')" class="rev-cat-btn px-4 py-2 rounded-xl text-xs font-bold whitespace-nowrap bg-slate-100 text-slate-600 hover:bg-slate-200 dark:bg-slate-900 dark:text-slate-400" data-category="Lifestyle">Lifestyle</button>
+          <button onclick="filterReviewCategory('Fashion')" class="rev-cat-btn px-4 py-2 rounded-xl text-xs font-bold whitespace-nowrap bg-slate-100 text-slate-600 hover:bg-slate-200 dark:bg-slate-900 dark:text-slate-400" data-category="Fashion">Fashion</button>
         </div>
 
         <div class="relative min-w-[240px]">
           <i data-lucide="search" class="w-4 h-4 absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400"></i>
-          <input type="text" id="affiliate-search" oninput="renderAffiliateGrid()" placeholder="Cari ulasan video..." class="w-full pl-10 pr-4 py-2 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-xs font-medium focus:outline-none focus:ring-2 focus:ring-rose-500">
+          <input type="text" id="review-search" oninput="renderReviewGrid()" placeholder="Cari ulasan..." class="w-full pl-10 pr-4 py-2 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-xs font-medium focus:outline-none focus:ring-2 focus:ring-rose-500">
         </div>
       </div>
 
-      <div id="affiliate-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"></div>
+      <div id="review-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"></div>
     </section>
 
   </main>
@@ -281,13 +315,14 @@
     </div>
   </div>
 
-  <!-- JAVASCRIPT LOGIC WITH BULLETPROOF CSV PARSER -->
+  <!-- JAVASCRIPT LOGIC -->
   <script>
-    let socksList = [];
-    let affiliateList = [];
+    let productList = [];
+    let reviewList = [];
     let cart = JSON.parse(localStorage.getItem('picklab_cart')) || [];
-    let currentSocksFilter = 'All';
-    let currentAffiliateFilter = 'All';
+    let currentTab = 'product';
+    let currentCategory = 'All';
+    let currentReviewCategory = 'All';
     let currentSlide = 0;
     const totalSlides = 2;
 
@@ -305,10 +340,9 @@
         const dataText = await response.text();
         const rows = parseRobustCSV(dataText);
 
-        socksList = [];
-        affiliateList = [];
+        productList = [];
+        reviewList = [];
 
-        // Loop mulai dari baris ke-1 (setelah header)
         for (let i = 1; i < rows.length; i++) {
           const r = rows[i];
           if (r.length >= 8 && r[0].trim() !== '') {
@@ -323,16 +357,23 @@
               type: r[7].trim().toLowerCase()
             };
 
-            if (item.type === 'store') {
-              socksList.push(item);
-            } else if (item.type === 'affiliate') {
-              affiliateList.push({ ...item, clicks: 0 });
+            // type bisa bernilai: 'product' (atau 'store'), 'flashsale', 'discount', atau 'review' (atau 'affiliate')
+            if (item.type === 'product' || item.type === 'store') {
+              productList.push(item);
+            } else if (item.type === 'flashsale') {
+              productList.push({ ...item, isFlashSale: true });
+            } else if (item.type === 'discount') {
+              productList.push({ ...item, isDiscount: true });
+            } else if (item.type === 'review' || item.type === 'affiliate') {
+              reviewList.push({ ...item });
             }
           }
         }
 
-        renderSocksGrid();
-        renderAffiliateGrid();
+        renderCurrentGrid();
+        renderFlashSaleGrid();
+        renderDiscountGrid();
+        renderReviewGrid();
         updateCartUI();
         lucide.createIcons();
       } catch (error) {
@@ -340,7 +381,6 @@
       }
     }
 
-    // Parser CSV standar yang aman menangani koma di dalam URL/teks
     function parseRobustCSV(text) {
       let lines = text.split('\n');
       let result = [];
@@ -378,34 +418,39 @@
     function toggleSideMenu(show) { document.getElementById('side-menu').classList.toggle('hidden', !show); }
 
     function switchTab(tabName) {
-      document.getElementById('tab-store').classList.add('hidden');
-      document.getElementById('tab-affiliate').classList.add('hidden');
+      currentTab = tabName;
+      document.getElementById('tab-product').classList.add('hidden');
+      document.getElementById('tab-flashsale').classList.add('hidden');
+      document.getElementById('tab-discount').classList.add('hidden');
+      document.getElementById('tab-review').classList.add('hidden');
 
-      const btnStore = document.getElementById('menu-btn-store');
-      const btnAff = document.getElementById('menu-btn-affiliate');
-      if (btnStore) btnStore.className = "w-full flex items-center gap-3 px-4 py-3 rounded-2xl text-sm font-bold text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800";
-      if (btnAff) btnAff.className = "w-full flex items-center gap-3 px-4 py-3 rounded-2xl text-sm font-bold text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800";
+      ['flashsale', 'discount', 'product', 'review'].forEach(t => {
+        const btn = document.getElementById(`menu-btn-${t}`);
+        if (btn) {
+          btn.className = "w-full flex items-center gap-3 px-4 py-3 rounded-2xl text-sm font-bold transition-all text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800";
+        }
+      });
 
-      if (tabName === 'store') {
-        document.getElementById('tab-store').classList.remove('hidden');
-        if (btnStore) btnStore.className = "w-full flex items-center gap-3 px-4 py-3 rounded-2xl text-sm font-bold bg-orange-50 dark:bg-orange-950/30 text-orange-600 dark:text-orange-400 border border-orange-200 dark:border-orange-800";
-      } else if (tabName === 'affiliate') {
-        document.getElementById('tab-affiliate').classList.remove('hidden');
-        if (btnAff) btnAff.className = "w-full flex items-center gap-3 px-4 py-3 rounded-2xl text-sm font-bold bg-rose-50 dark:bg-rose-950/30 text-rose-600 dark:text-rose-400 border border-rose-200 dark:border-rose-800";
+      const activeBtn = document.getElementById(`menu-btn-${tabName}`);
+      if (activeBtn) {
+        activeBtn.className = "w-full flex items-center gap-3 px-4 py-3 rounded-2xl text-sm font-bold bg-orange-50 dark:bg-orange-950/30 text-orange-600 dark:text-orange-400 border border-orange-200 dark:border-orange-800";
       }
+
+      document.getElementById(`tab-${tabName}`).classList.remove('hidden');
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 
     function toggleDarkMode() { document.documentElement.classList.toggle('dark'); }
 
-    function filterSocksCategory(cat) {
-      currentSocksFilter = cat;
-      renderSocksGrid();
+    function filterCategory(cat) {
+      currentCategory = cat;
+      renderCurrentGrid();
     }
-    function renderSocksGrid() {
-      const container = document.getElementById('socks-grid');
-      const q = document.getElementById('socks-search')?.value.toLowerCase() || '';
-      const filtered = socksList.filter(item => (currentSocksFilter === 'All' || item.category.toLowerCase() === currentSocksFilter.toLowerCase()) && item.title.toLowerCase().includes(q));
+
+    function renderCurrentGrid() {
+      const container = document.getElementById('main-grid');
+      const q = document.getElementById('main-search')?.value.toLowerCase() || '';
+      const filtered = productList.filter(item => !item.isFlashSale && !item.isDiscount && (currentCategory === 'All' || item.category.toLowerCase() === currentCategory.toLowerCase()) && item.title.toLowerCase().includes(q));
 
       if (filtered.length === 0) {
         container.innerHTML = `<div class="col-span-full text-center py-12 text-slate-400"><p class="font-semibold text-sm">Belum ada produk di Google Sheets.</p></div>`;
@@ -413,7 +458,32 @@
         return;
       }
 
-      container.innerHTML = filtered.map(item => `
+      container.innerHTML = filtered.map(item => productCardHTML(item)).join('');
+      lucide.createIcons();
+    }
+
+    function renderFlashSaleGrid() {
+      const container = document.getElementById('flashsale-grid');
+      const filtered = productList.filter(item => item.isFlashSale);
+      if (filtered.length === 0) {
+        container.innerHTML = `<div class="col-span-full text-center py-12 text-slate-400"><p class="font-semibold text-sm">Belum ada produk Flash Sale.</p></div>`;
+        return;
+      }
+      container.innerHTML = filtered.map(item => productCardHTML(item)).join('');
+    }
+
+    function renderDiscountGrid() {
+      const container = document.getElementById('discount-grid');
+      const filtered = productList.filter(item => item.isDiscount);
+      if (filtered.length === 0) {
+        container.innerHTML = `<div class="col-span-full text-center py-12 text-slate-400"><p class="font-semibold text-sm">Belum ada produk Diskon.</p></div>`;
+        return;
+      }
+      container.innerHTML = filtered.map(item => productCardHTML(item)).join('');
+    }
+
+    function productCardHTML(item) {
+      return `
         <div class="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 overflow-hidden flex flex-col group hover:border-orange-500/50 transition-all shadow-sm">
           <div class="relative aspect-square overflow-hidden bg-slate-100 dark:bg-slate-800">
             <img src="${item.image}" alt="${item.title}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
@@ -432,21 +502,20 @@
             </div>
           </div>
         </div>
-      `).join('');
-      lucide.createIcons();
+      `;
     }
 
-    function filterAffiliateCategory(cat) {
-      currentAffiliateFilter = cat;
-      renderAffiliateGrid();
+    function filterReviewCategory(cat) {
+      currentReviewCategory = cat;
+      renderReviewGrid();
     }
-    function renderAffiliateGrid() {
-      const container = document.getElementById('affiliate-grid');
-      const q = document.getElementById('affiliate-search')?.value.toLowerCase() || '';
-      const filtered = affiliateList.filter(item => (currentAffiliateFilter === 'All' || item.category.toLowerCase() === currentAffiliateFilter.toLowerCase()) && item.title.toLowerCase().includes(q));
+    function renderReviewGrid() {
+      const container = document.getElementById('review-grid');
+      const q = document.getElementById('review-search')?.value.toLowerCase() || '';
+      const filtered = reviewList.filter(item => (currentReviewCategory === 'All' || item.category.toLowerCase() === currentReviewCategory.toLowerCase()) && item.title.toLowerCase().includes(q));
 
       if (filtered.length === 0) {
-        container.innerHTML = `<div class="col-span-full text-center py-12 text-slate-400"><p class="font-semibold text-sm">Belum ada konten affiliate di Google Sheets.</p></div>`;
+        container.innerHTML = `<div class="col-span-full text-center py-12 text-slate-400"><p class="font-semibold text-sm">Belum ada review produk di Google Sheets.</p></div>`;
         lucide.createIcons();
         return;
       }
@@ -464,7 +533,7 @@
               <p class="text-rose-600 dark:text-rose-400 font-extrabold text-base mt-1">Estimasi Rp ${item.price.toLocaleString('id-ID')}</p>
             </div>
             <a href="${item.url || PICKLAB_TIKTOK_URL}" target="_blank" class="w-full py-2.5 rounded-xl bg-tiktok hover:bg-rose-600 text-white font-bold text-xs flex items-center justify-center gap-1.5 transition-colors">
-              Beli di TikTok
+              Tonton Review TikTok
             </a>
           </div>
         </div>
@@ -473,21 +542,21 @@
     }
 
     function toggleCartModal(show) { document.getElementById('cart-drawer').classList.toggle('hidden', !show); }
-    function addToCart(sockId) {
-      const sock = socksList.find(s => s.id === sockId);
-      if (!sock) return;
-      const existing = cart.find(c => c.id === sockId);
+    function addToCart(productId) {
+      const p = productList.find(x => x.id === productId);
+      if (!p) return;
+      const existing = cart.find(c => c.id === productId);
       if (existing) existing.qty += 1;
-      else cart.push({ id: sock.id, title: sock.title, price: sock.price, qty: 1, image: sock.image });
+      else cart.push({ id: p.id, title: p.title, price: p.price, qty: 1, image: p.image });
       localStorage.setItem('picklab_cart', JSON.stringify(cart));
       updateCartUI();
       toggleCartModal(true);
     }
-    function updateCartQty(sockId, delta) {
-      const item = cart.find(c => c.id === sockId);
+    function updateCartQty(productId, delta) {
+      const item = cart.find(c => c.id === productId);
       if (!item) return;
       item.qty += delta;
-      if (item.qty <= 0) cart = cart.filter(c => c.id !== sockId);
+      if (item.qty <= 0) cart = cart.filter(c => c.id !== productId);
       localStorage.setItem('picklab_cart', JSON.stringify(cart));
       updateCartUI();
     }
